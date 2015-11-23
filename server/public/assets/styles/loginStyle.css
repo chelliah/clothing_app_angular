@@ -1,0 +1,11 @@
+html, body{
+    background-color: lightblue;
+}
+.login {
+    background-color: #83a2af;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 25vh;
+    width: 50%;
+    padding-bottom: 30px;
+}
