@@ -35,9 +35,20 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
 }]);
 
 
-myApp.controller('AddItemController', ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+myApp.controller('AddItemController', ["$scope", "$uibModalInstance", "DataService", function ($scope, $uibModalInstance, DataService) {
+
+    $scope.item = {};
+
+    $scope.dataService = DataService;
+
+    $scope.types = $scope.dataService.typeData();
+
+    $scope.sizes = $scope.dataService.sizeData();
+
+
 
     $scope.ok = function () {
+        console.log($scope.item);
         $uibModalInstance.close();
     };
 
@@ -45,3 +56,4 @@ myApp.controller('AddItemController', ["$scope", "$uibModalInstance", function (
         $uibModalInstance.close();
     };
 }]);
+

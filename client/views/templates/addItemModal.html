@@ -1,4 +1,69 @@
-<h1>Hi from a modal</h1>
+<div class="add-item">
+    <h1>Add an Item for sale</h1>
+    <form>
+        <div>
+            <label for="itemName">Item Name:</label>
+            <input type="text" name="itemName" id="itemName" ng-model="item.name">
+        </div>
 
-<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <div>
+            <label for="itemURL">Item URL:</label>
+            <input type="url" name="itemURL" id="itemURL" ng-model="item.url">
+        </div>
+
+        <div>
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="Male" ng-model="item.gender" checked>Male
+            <input type="radio" name="gender" value="Female" ng-model="item.gender">Female
+            <input type="radio" name="gender" value="Neither/Unisex" ng-model="item.gender">Neither/Unisex
+        </div>
+
+
+        <div>
+            <label for="type">Type:</label>
+            <!--<select ng-options="type.name for type in types" ng-model="item.type"></select>-->
+            <select id="type" ng-model="item.type">
+                <optgroup ng-repeat="category in types" label="{{category.name}}">
+                    <option ng-repeat="type in category.list" label="{{type}}" value ='{{type}}'></option>
+                </optgroup>
+            </select>
+            <!--<select ng-options="category.list group by category.name for category in types"></select>-->
+        </div>
+
+        <div>
+            <label for="size">Size:</label>
+            <!--<select ng-options="type.name for type in types" ng-model="item.type"></select>-->
+            <select id="size" ng-model="item.size">
+                <optgroup ng-repeat="category in sizes" label="{{category.name}}">
+                    <option ng-repeat="size in category.list" label="{{size}}" value ='{{size}}'></option>
+                </optgroup>
+            </select>
+            <!--<select ng-options="category.list group by category.name for category in types"></select>-->
+        </div>
+
+        <div>
+            <label>Condition:</label>
+            <input type="radio" name="condition" value="Like New" ng-model="item.condition" checked>Like New
+            <input type="radio" name="condition" value="Good" ng-model="item.condition">Good
+            <input type="radio" name="condition" value="Well Worn" ng-model="item.condition">Well Worn
+        </div>
+
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" name="price" id="price" ng-model="item.price">
+        </div>
+
+        <div>
+            <label for="comments">Additional Comments:</label>
+            <textarea name="comments" id="comments" ng-model="item.comments"></textarea>
+        </div>
+
+    </form>
+
+    <div class="buttons">
+        <button class ='btn btn-primary' type="submit" ng-click="ok()">Add Item</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+
+</div>
+

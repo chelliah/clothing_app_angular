@@ -59,3 +59,15 @@ nav{
     color: #cdcdcd;
     text-decoration: none;
 }
+
+
+/*ADD ITEM MODAL STYLING*/
+
+.add-item form{
+    padding-left: 10px;
+}
+
+.add-item .buttons{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}

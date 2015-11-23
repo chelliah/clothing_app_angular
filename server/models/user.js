@@ -20,10 +20,12 @@ var UserSchema = new Schema({
     items: [{
         imageURL: {type: String, required: true},
         itemName: {type: String, required: true},
+        gender: {type: String},
+        type: {type: String},
+        size: {type: String, required: true},
         condition: {type: String, required: true},
         price: {type: String, required: true},
-        size: {type: String, required: true},
-        comments: {type: String, required: true},
+        comments: {type: String, required: true}
         //trade: Boolean,
         //purchase: Boolean
     }]
