@@ -18,14 +18,14 @@ var UserSchema = new Schema({
     location: {type: String, required: true},
     //wishList: [{ item : {type: String, required: true} }],
     items: [{
-        imageURL: {type: String, required: true},
-        itemName: {type: String, required: true},
+        url: {type: String, required: true},
+        name: {type: String, required: true},
         gender: {type: String},
         type: {type: String},
         size: {type: String, required: true},
         condition: {type: String, required: true},
         price: {type: String, required: true},
-        comments: {type: String, required: true}
+        comments: {type: String}
         //trade: Boolean,
         //purchase: Boolean
     }]

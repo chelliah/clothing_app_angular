@@ -36,9 +36,10 @@ app.use('/', index);
 
 // Mongo Connection //
 var mongoURI = "mongodb://localhost:27017/clothing_db_01";
-//var mongoURI = "";
 
 var mongoDB = mongoose.connect(mongoURI).connection;
+
+mongoose.set('debug', true);
 
 mongoDB.on('error', function(err){
     if(err) console.log("MONGO ERROR: ", err);
