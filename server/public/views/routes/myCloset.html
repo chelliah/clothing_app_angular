@@ -1,4 +1,9 @@
 <h1>My Closet</h1>
-
+<h2>My Items</h2>
+<div ng-repeat="item in user.items" class="user-item well">
+    <img ng-src="{{item.url}}">
+    <p>{{item.name}}</p>
+    <button class="btn btn-danger" ng-click="remove(item)">Remove</button>
+</div>
 <div class="btn btn-primary" ng-click="open()">+ Add Item</div>
 

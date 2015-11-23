@@ -4,6 +4,26 @@
 myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataService", function($scope, $http, $uibModal,DataService){
     console.log('ur in the closet');
 
+    //LOAD IN DATASERVICE DATA
+    $scope.dataService = DataService;
+
+    $scope.updateUserData = function(){
+        $scope.dataService.retrieveData().then(function(){
+            $scope.user = $scope.dataService.peopleData();
+        })
+    };
+
+
+    if($scope.dataService.peopleData() === undefined){
+        $scope.updateUserData();
+    }
+
+    $scope.user = $scope.dataService.peopleData();
+    console.log($scope.user);
+
+
+
+    //SET MODAL FUNCTIONALITY
     $scope.animationsEnabled = true;
 
     $scope.open = function (size) {
@@ -19,16 +39,31 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
             }
         });
 
-        modalInstance.result.then(function(selectedItem){
-            $scope.selected = selectedItem;
-        }, function(){
-            $log.info('modal dismissed at: ' + new Date());
+        modalInstance.result.then(function(){
+            console.log('closed');
+            $scope.updateUserData();
         })
     };
 
     $scope.toggleAnimation = function(){
         $scope.animationsEnabled = !$scope.animationsEnabled;
-    }
+    };
+
+
+    //REMOVE ITEM FUNCTION
+
+    $scope.remove = function(item){
+        console.log(item);
+        $http.delete('/user/entry', {params: {id: item._id}}).then(function(response){
+            console.log(response);
+            $scope.updateUserData();
+        })
+
+    };
+
+    //$scope.on('update', function(){
+    //    $scope.updateUserData();
+    //})
 
 
 
@@ -53,7 +88,9 @@ myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "
             console.log(response);
         });
         $scope.item = {};
+
         $uibModalInstance.close();
+        $scope.$emit('update');
     };
 
     $scope.cancel = function () {

@@ -22,10 +22,22 @@ router.put('/entry', function(req,res){
     //});
 
     User.findOneAndUpdate({_id: req.user._id}, { $push: {items: req.body}}, {upsert: true}, function(err, user){
-        console.log("did it work", user);
+        //console.log("did it work", user);
         if(err) return err;
         res.send(user);
     })
+});
+
+//
+router.delete('/entry', function(req,res){
+    console.log(req.query.id);
+    //User.findById(req.user._id, function(err,user){
+    //    user.items.update()
+    //});
+    User.findOneAndUpdate({_id: req.user._id}, {$pull: {items: {_id: req.query.id}}}, function(err,user){
+        if(err) return err;
+        res.send(user);
+    });
 });
 
 module.exports = router;
