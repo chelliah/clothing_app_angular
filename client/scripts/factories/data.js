@@ -69,6 +69,7 @@ myApp.factory('DataService', ['$http', function($http){
         return $http.get('/user/all').then(function(response){
             //console.log(response);
             all = response.data;
+            return response.data;
         })
     };
 
