@@ -1,0 +1,20 @@
+<div class="view-item">
+    <h1>{{item.name}}</h1>
+    <img ng-src="{{item.url}}" height="200" width="auto">
+    <p>Gender: {{item.gender}}</p>
+    <p>Size: {{item.size}}</p>
+    <p>Type: {{item.type}}</p>
+    <p>Additional Comments: {{item.comments}}</p>
+    <h4>Seller: {{user.username}}</h4>
+    <h4>Price: {{item.price | currency:$}}</h4>
+
+    <div class="buttons">
+        <button class ='btn btn-primary' type="submit" ng-click="ok()">
+            <a HREF="mailto:{{user.email}}?subject=Interest in purchasing {{item.name}} on clothing website
+            &body=Hi! I am interested in purchasing the {{item.name}} you listed on the clothing website">Email Seller</a>
+        </button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+
+</div>
+

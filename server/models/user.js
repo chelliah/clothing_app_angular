@@ -25,6 +25,7 @@ var UserSchema = new Schema({
         size: {type: String, required: true},
         condition: {type: String, required: true},
         price: {type: String, required: true},
+        added: {type: Date, default: Date.now},
         comments: {type: String}
         //trade: Boolean,
         //purchase: Boolean

@@ -34,7 +34,7 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
             size: size,
             resolve: {
                 items: function(){
-                    return $scope.items;
+                    return $scope.user;
                 }
             }
         });
