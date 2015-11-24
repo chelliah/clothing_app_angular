@@ -61,6 +61,18 @@ nav{
 }
 
 
+/*MY CLOSET STYLE*/
+.items {
+
+}
+
+.user-item{
+    width: 90%;
+    margin: 0 auto;
+}
+.user-item *{
+    display: inline;
+}
 /*ADD ITEM MODAL STYLING*/
 
 .add-item form{
@@ -71,3 +83,4 @@ nav{
     padding-left: 10px;
     padding-bottom: 10px;
 }
+

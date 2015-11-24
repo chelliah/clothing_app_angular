@@ -89,12 +89,11 @@ myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "
         });
         $scope.item = {};
 
-        $uibModalInstance.close();
-        $scope.$emit('update');
+        $uibModalInstance.close('submitted');
     };
 
     $scope.cancel = function () {
-        $uibModalInstance.close();
+        $uibModalInstance.dismiss('cancel');
     };
 }]);
 
