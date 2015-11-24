@@ -6,6 +6,7 @@ myApp.factory('DataService', ['$http', function($http){
     // - create a getter to return the data that is being stored in the var
 
     var user = undefined;
+    var all = undefined;
 
     var types = [
         {
@@ -54,15 +55,21 @@ myApp.factory('DataService', ['$http', function($http){
     ];
 
 
-
     //PRIVATE
     var getUserData = function(){
         return $http.get('/user').then(function(response){
             user = response.data;
-            console.log("Async Data Response: ", user);
+            //console.log("Async Data Response: ", user);
             return response.data;
             //return response.data.people;
         });
+    };
+
+    var getAll = function(){
+        return $http.get('/user/all').then(function(response){
+            //console.log(response);
+            all = response.data;
+        })
     };
 
     //PUBLIC
@@ -78,6 +85,12 @@ myApp.factory('DataService', ['$http', function($http){
         },
         sizeData: function(){
             return sizes;
+        },
+        retrieveAll: function(){
+          return getAll();
+        },
+        allData: function(){
+            return all;
         }
     };
 

@@ -1,5 +1,12 @@
 <h1>This is the main page</h1>
-<div>
-    <h2>{{user.username}}</h2>
-    <p>{{user.email}}</p>
+<div id="boxFilter">
+
+</div>
+<div id="boxContainer">
+    <div class="well col-md-4 for-sale-item" ng-repeat="item in items">
+        <img ng-src="{{item.url}}" height="150" width="auto">
+        <h3>{{item.name}}</h3>
+        <h4>{{item.price | currency:$}}</h4>
+        <button class="btn btn-info">Get Info</button>
+    </div>
 </div>
