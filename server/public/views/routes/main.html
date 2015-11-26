@@ -89,7 +89,7 @@
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->
-    <div class="btn" ng-click="logFilter()">Log Filters</div>
+    <div id="filterButton" class="btn info-button" ng-click="logFilter()">Log Filters</div>
 </div>
 
 <div id="boxContainer" class=" col-md-9 col-sm-8">
@@ -97,6 +97,6 @@
         <img ng-src="{{item.url}}" height="150" width="auto">
         <h3>{{item.name}}</h3>
         <h4>{{item.price | currency:$}}</h4>
-        <button class="btn btn-info" ng-click="open(item)">Get Info</button>
+        <button class="btn info-button" ng-click="open(item)">Get Info</button>
     </div>
 </div>
