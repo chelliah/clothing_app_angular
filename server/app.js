@@ -8,6 +8,7 @@ var session = require('express-session');
 
 var register = require('./routes/register');
 var user = require('./routes/user');
+var item = require('./routes/item');
 var index = require('./routes/index');
 
 
@@ -32,6 +33,7 @@ app.use(passport.session());
 // Routes
 app.use('/register', register);
 app.use('/user', user);
+app.use('/item', item);
 app.use('/', index);
 
 // Mongo Connection //

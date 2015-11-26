@@ -17,19 +17,19 @@ var UserSchema = new Schema({
     email: {type: String, required: true},
     location: {type: String, required: true},
     //wishList: [{ item : {type: String, required: true} }],
-    items: [{
-        url: {type: String, required: true},
-        name: {type: String, required: true},
-        gender: {type: String},
-        type: {type: String},
-        size: {type: String, required: true},
-        condition: {type: String, required: true},
-        price: {type: Number, required: true},
-        added: {type: Date, default: Date.now},
-        comments: {type: String}
-        //trade: Boolean,
-        //purchase: Boolean
-    }]
+    //items: [{
+    //    url: {type: String, required: true},
+    //    name: {type: String, required: true},
+    //    gender: {type: String},
+    //    type: {type: String},
+    //    size: {type: String, required: true},
+    //    condition: {type: String, required: true},
+    //    price: {type: Number, required: true},
+    //    added: {type: Date, default: Date.now},
+    //    comments: {type: String}
+    //    //trade: Boolean,
+    //    //purchase: Boolean
+    //}]
 });
 
 UserSchema.pre('save', function(next){

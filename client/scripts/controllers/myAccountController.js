@@ -19,8 +19,4 @@ myApp.controller('MyAccountController', ["$scope", "$http", "DataService", funct
         $scope.user = $scope.dataService.peopleData();
     }
 
-    //$scope.user = $scope.dataService.peopleData();
-
-
-
 }]);

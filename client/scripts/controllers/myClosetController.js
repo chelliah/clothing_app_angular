@@ -7,19 +7,19 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
     //LOAD IN DATASERVICE DATA
     $scope.dataService = DataService;
 
-    $scope.updateUserData = function(){
-        $scope.dataService.retrieveData().then(function(){
-            $scope.user = $scope.dataService.peopleData();
+    $scope.updateItemData = function(){
+        $scope.dataService.getUserItems().then(function(){
+            $scope.items = $scope.dataService.userItems();
         })
     };
 
 
-    if($scope.dataService.peopleData() === undefined){
-        $scope.updateUserData();
+    if($scope.dataService.userItems() === undefined){
+        $scope.updateItemData();
     }
 
-    $scope.user = $scope.dataService.peopleData();
-    console.log($scope.user);
+    $scope.items = $scope.dataService.userItems();
+    console.log($scope.items);
 
 
 
@@ -32,14 +32,14 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
             size: size,
             resolve: {
                 items: function(){
-                    return $scope.user;
+                    return $scope.items;
                 }
             }
         });
 
         modalInstance.result.then(function(){
             console.log('closed');
-            $scope.updateUserData();
+            $scope.updateItemData();
         })
     };
 
@@ -50,9 +50,9 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
 
     $scope.remove = function(item){
         console.log(item);
-        $http.delete('/user/entry', {params: {id: item._id}}).then(function(response){
+        $http.delete('/item', {params: {id: item._id}}).then(function(response){
             console.log(response);
-            $scope.updateUserData();
+            $scope.updateItemData();
         })
 
     };
@@ -80,7 +80,7 @@ myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "
 
     $scope.ok = function () {
         console.log($scope.item);
-        $http.put('/user/entry',$scope.item).then(function(response){
+        $http.post('/item',$scope.item).then(function(response){
             console.log(response);
         });
         $scope.item = {};

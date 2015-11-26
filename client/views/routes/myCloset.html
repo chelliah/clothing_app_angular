@@ -1,6 +1,6 @@
 <div class="items">
     <h2>My Items</h2>
-    <div ng-repeat="item in user.items" class="user-item well">
+    <div ng-repeat="item in items" class="user-item well">
         <img ng-src="{{item.url}}" height="100" width="auto">
         <p>{{item.name}}</p>
         <button class="btn btn-danger" ng-click="remove(item)">Remove</button>

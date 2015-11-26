@@ -7,7 +7,7 @@ myApp.factory('DataService', ['$http', function($http){
 
     var user = undefined;
     var all = undefined;
-    var queryResult = undefined;
+    var userItems = undefined;
 
     var types = [
         {
@@ -57,6 +57,8 @@ myApp.factory('DataService', ['$http', function($http){
 
 
     //PRIVATE
+
+    //GET DATA FOR USER IN SESSION
     var getUserData = function(){
         return $http.get('/user').then(function(response){
             user = response.data;
@@ -66,19 +68,26 @@ myApp.factory('DataService', ['$http', function($http){
         });
     };
 
-    var getAll = function(){
-        return $http.get('/user/all').then(function(response){
+    //GET ITEMS USER IS SELLING
+    var getUserItems = function(){
+        return $http.get('/item/user').then(function(response){
+            console.log(response.data);
+            userItems = response.data;
+            return response.data;
+        })
+    };
+
+    //GET ITEMS USER CAN BUY
+    var getSaleItems = function(){
+        return $http.get('/item/sale').then(function(response){
             //console.log(response);
             all = response.data;
             return response.data;
         })
     };
 
-    var queryItems = function(queryObject){
-        return $http.get('/user/query',{params: queryObject}).then(function(response){
-            console.log(response);
-        })
-    };
+
+
 
     //PUBLIC
     var publicApi = {
@@ -94,17 +103,17 @@ myApp.factory('DataService', ['$http', function($http){
         sizeData: function(){
             return sizes;
         },
-        retrieveAll: function(){
-          return getAll();
+        getSaleItems: function(){
+          return getSaleItems();
         },
-        allData: function(){
+        saleItems: function(){
             return all;
         },
-        queryItems: function(queryObject){
-            return queryItems(queryObject);
+        getUserItems : function(){
+            return getUserItems();
         },
-        getQueryResult: function(){
-            return queryResult;
+        userItems: function(){
+            return userItems;
         }
     };
 
