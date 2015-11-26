@@ -54,6 +54,40 @@ module.exports = function(grunt){
                 ],
                 dest: "server/public/vendors/"
             },
+            angularAnimate: {
+                expand: true,
+                cwd: 'node_modules/angular-animate/',
+                src: [
+                    "angular-animate.min.js",
+                    "angular-animate.min.js.map"
+                ],
+                dest: "server/public/vendors/"
+            },
+            fontAwesome: {
+                expand: true,
+                cwd: 'node_modules/font-awesome/css/',
+                src: [
+                    "font-awesome.min.css",
+                    "font-awesome.css.map"
+                ],
+                dest: "server/public/vendors/"
+            },
+            fontAwesomeFonts:{
+                expand: true,
+                cwd: 'node_modules/font-awesome/fonts/',
+                src: [
+                    "*"
+                ],
+                dest: "server/public/fonts/"
+            },
+            bootstrapFonts:{
+                expand: true,
+                cwd: 'node_modules/fonts/',
+                src: [
+                    "*"
+                ],
+                dest: "server/public/vendors/fonts/"
+            },
             underscore: {
                 expand: true,
                 cwd: 'node_modules/underscore/',

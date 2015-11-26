@@ -7,6 +7,7 @@ myApp.factory('DataService', ['$http', function($http){
 
     var user = undefined;
     var all = undefined;
+    var queryResult = undefined;
 
     var types = [
         {
@@ -73,6 +74,12 @@ myApp.factory('DataService', ['$http', function($http){
         })
     };
 
+    var queryItems = function(queryObject){
+        return $http.get('/user/query',{params: queryObject}).then(function(response){
+            console.log(response);
+        })
+    };
+
     //PUBLIC
     var publicApi = {
         retrieveData: function(){
@@ -92,6 +99,12 @@ myApp.factory('DataService', ['$http', function($http){
         },
         allData: function(){
             return all;
+        },
+        queryItems: function(queryObject){
+            return queryItems(queryObject);
+        },
+        getQueryResult: function(){
+            return queryResult;
         }
     };
 

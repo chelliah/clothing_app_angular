@@ -60,6 +60,25 @@ nav{
     text-decoration: none;
 }
 
+/*MAIN PAGE STYLE*/
+/*SIDEBAR*/
+#sidebarFilter {
+    height:100vh;
+    overflow: scroll;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 8px 0 32px -10px #555555;
+    -moz-box-shadow: 8px 0 32px -10px #555555;
+    box-shadow: 8px 0 32px -10px #555555;
+}
+
+.for-sale-item{
+    text-align: center;
+    padding-top:10px;
+}
+
+
 
 /*MY CLOSET STYLE*/
 .items {
@@ -80,6 +99,15 @@ nav{
 }
 
 .add-item .buttons{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+/*VIEW ITEM MODAL STYLING*/
+.view-item {
+    text-align: center;
+}
+.view-item .buttons{
     padding-left: 10px;
     padding-bottom: 10px;
 }

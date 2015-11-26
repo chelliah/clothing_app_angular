@@ -1,6 +1,6 @@
 <div class="add-item">
     <h1>Add an Item for sale</h1>
-    <form>
+    <form novalidate class="add-item-form">
         <div>
             <label for="itemName">Item Name:</label>
             <input type="text" name="itemName" id="itemName" ng-model="item.name">
@@ -50,7 +50,7 @@
 
         <div>
             <label for="price">Price:</label>
-            <input type="text" name="price" id="price" ng-model="item.price">
+            <input type="number" name="price" id="price" ng-model="item.price">
         </div>
 
         <div>

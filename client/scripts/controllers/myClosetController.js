@@ -24,11 +24,9 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
 
 
     //SET MODAL FUNCTIONALITY
-    $scope.animationsEnabled = true;
-
     $scope.open = function (size) {
         var modalInstance = $uibModal.open({
-            animation: $uibModal.animationsEnabled,
+            animation: true,
             templateUrl: 'templates/addItemModal.html',
             controller: 'AddItemController',
             size: size,
@@ -45,9 +43,7 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
         })
     };
 
-    $scope.toggleAnimation = function(){
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-    };
+
 
 
     //REMOVE ITEM FUNCTION

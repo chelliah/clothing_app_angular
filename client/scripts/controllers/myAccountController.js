@@ -15,9 +15,11 @@ myApp.controller('MyAccountController', ["$scope", "$http", "DataService", funct
 
     if($scope.dataService.peopleData() === undefined){
         $scope.updateUserData();
+    }else{
+        $scope.user = $scope.dataService.peopleData();
     }
 
-    $scope.user = $scope.dataService.peopleData();
+    //$scope.user = $scope.dataService.peopleData();
 
 
 
