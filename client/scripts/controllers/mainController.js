@@ -6,6 +6,7 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     $scope.itemFilter = {};
     $scope.user = {};
     $scope.items = {};
+    $scope.query = false;
 
     //PULL IN ITEM DATA CONSTANTS
     $scope.sizes = $scope.dataService.sizeData();
@@ -67,8 +68,29 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
                 }
             }
         }
-        console.log(query);
-        $scope.dataService.queryItems(query);
+
+        for(field in query){
+            console.log(field);
+            $scope.query=false;
+            for (var i = 0; i<query[field].length; i++){
+                if(query[field][i]){
+                    $scope.query=true;
+                    console.log('found one!');
+                    break;
+                }
+            }
+            console.log('results', $scope.query);
+        }
+
+        if($scope.query){
+            $scope.dataService.queryItems(query).then(function(){
+                $scope.items = $scope.dataService.saleItems();
+                console.log($scope.items);
+            });
+        }else{
+            $scope.updateSaleData();
+        }
+
     };
 
 }]);

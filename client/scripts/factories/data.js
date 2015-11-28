@@ -6,7 +6,7 @@ myApp.factory('DataService', ['$http', function($http){
     // - create a getter to return the data that is being stored in the var
 
     var user = undefined;
-    var all = undefined;
+    var items = undefined;
     var userItems = undefined;
 
     var types = [
@@ -61,6 +61,8 @@ myApp.factory('DataService', ['$http', function($http){
     var queryItems = function(query){
       return $http.get('/item/query', {params: query}).then(function(response){
           console.log(response);
+          items = response.data;
+          return response.data;
       })
     };
 
@@ -87,7 +89,7 @@ myApp.factory('DataService', ['$http', function($http){
     var getSaleItems = function(){
         return $http.get('/item/sale').then(function(response){
             //console.log(response);
-            all = response.data;
+            items = response.data;
             return response.data;
         })
     };
@@ -113,7 +115,7 @@ myApp.factory('DataService', ['$http', function($http){
           return getSaleItems();
         },
         saleItems: function(){
-            return all;
+            return items;
         },
         getUserItems : function(){
             return getUserItems();

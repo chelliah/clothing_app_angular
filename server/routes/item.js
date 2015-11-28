@@ -16,11 +16,13 @@ router.get('/sale', function(req,res){
 });
 
 var convertQuery = function(query){
-    var array = Array(query);
-    if(array.length==1){
-        return array;
-    }else if(array.length==0){
-        return [undefined]
+    console.log('preconverted', query);
+    if(typeof query == String){
+        console.log('its a string!');
+        return new Array(query);
+    }else if(query == undefined){
+        console.log('its undefined');
+        return [undefined];
     }else{
         return query;
     }
@@ -36,9 +38,10 @@ router.get('/query', function(req,res){
             {condition: {$in : convertQuery(req.query.condition)}},
             {size: {$in : convertQuery(req.query.size)}}
         ]
-    }).where({user_id: {$ne: req.user._id}}).exec(function(err,response){
+    }).where({user_id: {$ne: req.user._id}}).exec(function(err,items){
         if(err) console.log(err);
-        console.log("here are the returned results", response);
+        console.log("here are the returned results", items);
+        res.send(items)
     })
 });
 //GET USER ITEMS
