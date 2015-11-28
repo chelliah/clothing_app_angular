@@ -15,6 +15,32 @@ router.get('/sale', function(req,res){
     })
 });
 
+var convertQuery = function(query){
+    var array = Array(query);
+    if(array.length==1){
+        return array;
+    }else if(array.length==0){
+        return [undefined]
+    }else{
+        return query;
+    }
+};
+
+//QUERY
+router.get('/query', function(req,res){
+    console.log(req.query);
+    Item.find({
+        $or: [
+            {gender: {$in : convertQuery(req.query.gender)}},
+            {type: {$in : convertQuery(req.query.type)}},
+            {condition: {$in : convertQuery(req.query.condition)}},
+            {size: {$in : convertQuery(req.query.size)}}
+        ]
+    }).where({user_id: {$ne: req.user._id}}).exec(function(err,response){
+        if(err) console.log(err);
+        console.log("here are the returned results", response);
+    })
+});
 //GET USER ITEMS
 router.get('/user', function(req,res){
     Item.find({user_id: req.user._id}).exec(function(err,items){

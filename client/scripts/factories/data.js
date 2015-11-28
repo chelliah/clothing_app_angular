@@ -57,6 +57,12 @@ myApp.factory('DataService', ['$http', function($http){
 
 
     //PRIVATE
+    //SEARCH FOR SALE ITEMS USING FILTER
+    var queryItems = function(query){
+      return $http.get('/item/query', {params: query}).then(function(response){
+          console.log(response);
+      })
+    };
 
     //GET DATA FOR USER IN SESSION
     var getUserData = function(){
@@ -114,6 +120,9 @@ myApp.factory('DataService', ['$http', function($http){
         },
         userItems: function(){
             return userItems;
+        },
+        queryItems: function(query){
+            return queryItems(query);
         }
     };
 
