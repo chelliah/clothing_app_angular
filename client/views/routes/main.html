@@ -2,8 +2,8 @@
 <div id="sidebarFilter" class="col-md-3 col-sm-4 sidebar">
     <h1 id="sidebarFilterHeader">Filter Items</h1>
     <uib-accordion>
-        <uib-accordion-group>
-            <uib-accordion-heading is-open="status.open">
+        <uib-accordion-group is-open="status.open">
+            <uib-accordion-heading>
                 Gender <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
             <input type="checkbox" value="Male" ng-model="itemFilter.gender['Male']"> Male
@@ -12,8 +12,8 @@
         </uib-accordion-group>
     </uib-accordion>
     <uib-accordion>
-        <uib-accordion-group>
-            <uib-accordion-heading is-open="status.open">
+        <uib-accordion-group is-open="status.open">
+            <uib-accordion-heading>
                 Condition <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
             <input type="checkbox" value="Like New" ng-model="itemFilter.condition['Like New']"> Like New
@@ -22,14 +22,14 @@
         </uib-accordion-group>
     </uib-accordion>
     <uib-accordion>
-        <uib-accordion-group>
-            <uib-accordion-heading is-open="status.open">
+        <uib-accordion-group is-open="status.open">
+            <uib-accordion-heading>
                 Type <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
             <uib-accordion ng-repeat="category in types">
-                <uib-accordion-group>
-                    <uib-accordion-heading is-open="status.open">
-                        {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                <uib-accordion-group  is-open="child.open">
+                    <uib-accordion-heading>
+                        {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': child.open, 'glyphicon-chevron-right': !child.open}"></i>
                     </uib-accordion-heading>
                     <div ng-repeat="field in category.list">
                         <input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.type[field]"> {{field}}
@@ -39,14 +39,14 @@
         </uib-accordion-group>
     </uib-accordion>
     <uib-accordion>
-        <uib-accordion-group>
-            <uib-accordion-heading is-open="status.open">
+        <uib-accordion-group is-open="status.open">
+            <uib-accordion-heading>
                 Size <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
             <uib-accordion ng-repeat="category in sizes">
-                <uib-accordion-group>
-                    <uib-accordion-heading is-open="status.open">
-                        {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                <uib-accordion-group is-open="child.open">
+                    <uib-accordion-heading>
+                        {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': child.open, 'glyphicon-chevron-right': !child.open}"></i>
                     </uib-accordion-heading>
                     <div ng-repeat="field in category.list">
                         <input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.size[field]"> {{field}}

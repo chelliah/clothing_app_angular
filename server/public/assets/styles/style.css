@@ -20,7 +20,7 @@ header{
     background-color: #A04152;
 }
 
-h1{
+.logo{
     margin: 0;
     padding-left: 25px;
     padding-top: 25px;
@@ -108,7 +108,7 @@ nav{
 /**/
 .for-sale-item{
     text-align: center;
-    padding-top:10px;
+    padding-top:25px;
 }
 
 
