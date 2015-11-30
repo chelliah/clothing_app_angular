@@ -55,45 +55,17 @@
             </uib-accordion>
         </uib-accordion-group>
     </uib-accordion>
-
-    <!--<div id="genderFilter">-->
-        <!--<h3 class="sort">Gender</h3>-->
-        <!--<input type="checkbox" value="Male" ng-model="itemFilter.gender['Male']"> Male-->
-        <!--<input type="checkbox" value="Female" ng-model="itemFilter.gender['Female']"> Female-->
-        <!--<input type="checkbox" value="Neither/Unisex" ng-model="itemFilter.gender['Neither/Unisex']"> Neither/Unisex-->
-    <!--</div>-->
-    <!--<div id="conditionFilter">-->
-        <!--<h3 class="sort">Condition</h3>-->
-        <!--<input type="checkbox" value="Like New" ng-model="itemFilter.condition['Like New']"> Like New-->
-        <!--<input type="checkbox" value="Good" ng-model="itemFilter.condition['Good']"> Good-->
-        <!--<input type="checkbox" value="Well Worn" ng-model="itemFilter.condition['Well Worn']"> Well Worn-->
-    <!--</div>-->
-    <!--<div id="priceFilter">-->
-        <!--<h3 class="sort">Price</h3>-->
-    <!--</div>-->
-    <!--<div id="typeFilter">-->
-        <!--<h3 class="sort">Type</h3>-->
-        <!--<div ng-repeat="category in types">-->
-            <!--<h4>{{category.name}}</h4>-->
-            <!--<div ng-repeat="field in category.list">-->
-                <!--<input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.type[field]"> {{field}}-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div id="sizeFilter">-->
-        <!--<h3 class="sort">Size</h3>-->
-        <!--<div ng-repeat="category in sizes">-->
-            <!--<h4>{{category.name}}</h4>-->
-            <!--<div ng-repeat="field in category.list">-->
-                <!--<input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.size[field]"> {{field}}-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
     <div id="filterButton" class="btn info-button" ng-click="logFilter()">Log Filters</div>
 </div>
 
 <div id="boxContainer" class=" col-md-9 col-sm-8">
-    <div class="col-md-4 col-sm-6 for-sale-item" ng-repeat="item in items | orderBy: item.added">
+    <select id="itemSort" ng-model="order" name="Sort By: ">
+        <option value="price">Price (Low to High)</option>
+        <option value="-price">Price (High to Low)</option>
+        <option value="added">Date Added (Newest First)</option>
+        <option value="-added">Date Added (Oldest First)</option>
+    </select>
+    <div class="col-md-4 col-sm-6 for-sale-item" ng-repeat="item in items | orderBy: order">
         <img ng-src="{{item.url}}" height="150" width="auto">
         <h3>{{item.name}}</h3>
         <h4>{{item.price | currency:$}}</h4>
