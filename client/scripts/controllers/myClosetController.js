@@ -81,6 +81,7 @@ myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "
     $scope.ok = function () {
         console.log($scope.item);
         $http.post('/item',$scope.item).then(function(response){
+            console.log("WAIT AM I ADDING AN ITEM ACCIDENTALLY");
             console.log(response);
         });
         $scope.item = {};

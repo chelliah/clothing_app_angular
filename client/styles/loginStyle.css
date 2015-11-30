@@ -1,8 +1,13 @@
 body{
     /*background-color: #E8EDEC;*/
     background: #E8EDEC url("../images/45degreee_fabric.png") repeat;
-
 }
+
+h1,label{
+    color: #E8EDEC;
+}
+
+
 
 img {
     /* position: absolute; */
@@ -21,4 +26,17 @@ img {
     margin-top: 10vh;
     width: 50%;
     padding-bottom: 30px;
+}
+
+.btn{
+    margin-top: 10px;
+    background-color: #E8EDEC;
+    color: #5d292e;
+
+}
+
+.btn:hover{
+    background-color: #b7bcbb;
+    color: #5d292e;
+
 }

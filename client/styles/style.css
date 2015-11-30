@@ -47,7 +47,6 @@ nav{
 .nav-links{
     padding-right:15px;
     bottom: 0;
-    display: inline;
     float:right;
 }
 
@@ -101,18 +100,21 @@ nav{
     }
 }
 
+
+
+/*MAIN STYLING*/
 #boxContainer{
     height: 100vh;
 }
 
-/*MAIN STYLING*/
 .for-sale-item{
     text-align: center;
     padding-top:25px;
 }
 
 #sortBox{
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
+    height: 50px;
 }
 #sortBox *{
     display:inline;
@@ -122,9 +124,11 @@ nav{
     margin-right:25px;
 }
 
-#sortBy *{
-    display:inline;
+#itemBtn{
+    float:left;
+    margin-left: 25px;
 }
+
 
 .num-btn{
     background-color: #A04152;
@@ -147,41 +151,62 @@ nav{
     border-color: #703737;
 }
 
-#itemBtn{
-    float:left;
-    margin-left: 25px;
-}
-
-
-#pagination{
-    text-align: right;
-    margin-top: 20px;
-    padding-right: 20px;
-}
-
-/*MY CLOSET STYLE*/
-.items {
-
-}
-
 #itemGrid{
-    height:95vh;
     margin:0;
+    height: 80vh;
     overflow: scroll;
 }
 
+#pagination{
+    text-align: right;
+    padding-right: 25px;
+    height: 10vh;
+}
+
+/*MY CLOSET STYLE*/
+
 .user-item{
+    box-sizing: border-box;
     width: 90%;
-    margin: 10px auto;
+    margin: 0 auto;
+    border-bottom: 2px solid #582c2c;
+    padding: 10px 0;
+    height: 120px
+}
+
+.user-item:nth-child(odd){
+    background: -webkit-linear-gradient(left, rgba(160,65,82,0), rgba(160,65,82,.3) , rgba(160,65,82,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3), rgba(160,65,82,0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3), rgba(160,65,82,0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3) , rgba(160,65,82,0)); /* Standard syntax */
 }
 .user-item *{
     display: inline;
-    padding: 10px 0;
+    position: absolute;
+}
+
+.user-item img{
+    left: 10%;
+}
+
+.user-item p{
+    left: 30%;
+    margin-top: 2%;
+}
+
+.user-item button{
+    left: 75%;
+    margin-top: 2%;
 }
 
 
+#myClosetHeader{
+    padding-left:5%;
+}
+
 #addItemButton{
-    margin-left: 30px;
+    margin-top: 25px;
+    margin-left: 5%;
 }
 /*ADD ITEM MODAL STYLING*/
 
@@ -203,6 +228,16 @@ nav{
     padding-bottom: 10px;
 }
 
+
+/*MY ACCOUNT STYLING*/
+#myAccountHeader{
+    margin-left: 50px;
+}
+
+#myAccountInfo{
+    margin-top: 25px;
+    margin-left: 75px;
+}
 
 /*BUTTON STYLINGS*/
 .info-button {
