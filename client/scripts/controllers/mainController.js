@@ -8,6 +8,17 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     $scope.items = {};
     $scope.query = false;
 
+
+    //INITIALIZE ITEM DISPLAY OPTIONS
+    $scope.itemsPerPage = 12;
+    $scope.displayPage = 1;
+    $scope.order = 'price';
+
+    //PAGE CHANGE FUNCTION
+    $scope.pageChanged = function(){
+        console.log('page changed to', $scope.currentPage);
+    };
+
     //PULL IN ITEM DATA CONSTANTS
     $scope.sizes = $scope.dataService.sizeData();
     $scope.types = $scope.dataService.typeData();

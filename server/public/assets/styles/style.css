@@ -1,6 +1,6 @@
 /*
 COLOR PALETTE
-    Cream Soda Orange: #A04152
+    Fuschia: #A04152
     Off White Font: #E8EDEC
     Dark purple Font: #3D2A37;
 */
@@ -57,16 +57,6 @@ nav{
     padding: 0 15px;
 }
 
-/*.nav-links a:hover {*/
-    /*color: #3D2A37;*/
-    /*text-decoration: none;*/
-/*}*/
-
-/*.nav-links a:active {*/
-    /*color: #3D2A37;*/
-    /*text-decoration: none;*/
-/*}*/
-
 .nav>li>a {
     position: relative;
     display: block;
@@ -105,26 +95,90 @@ nav{
     text-align: center;
 }
 
-/**/
+@media all and  (max-width: 1024px) {
+    .check-box{
+        display:block;
+    }
+}
+
+#boxContainer{
+    height: 100vh;
+}
+
+/*MAIN STYLING*/
 .for-sale-item{
     text-align: center;
     padding-top:25px;
 }
 
+#sortBox{
+    padding-bottom: 10px;
+}
+#sortBox *{
+    display:inline;
+}
+#sortBy{
+    float:right;
+    margin-right:25px;
+}
 
+#sortBy *{
+    display:inline;
+}
+
+.num-btn{
+    background-color: #A04152;
+    border-color: #703737;
+}
+
+.num-btn:hover{
+    background-color: #702f38;
+    border-color: #703737;
+}
+
+
+.num-btn.active{
+    background-color: #702f38;
+    border-color: #703737;
+}
+
+.num-btn.active:hover{
+    background-color: #582c2c;
+    border-color: #703737;
+}
+
+#itemBtn{
+    float:left;
+    margin-left: 25px;
+}
+
+
+#pagination{
+    text-align: right;
+    margin-top: 20px;
+    padding-right: 20px;
+}
 
 /*MY CLOSET STYLE*/
 .items {
 
 }
 
+#itemGrid{
+    height:95vh;
+    margin:0;
+    overflow: scroll;
+}
+
 .user-item{
     width: 90%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 .user-item *{
     display: inline;
+    padding: 10px 0;
 }
+
 
 #addItemButton{
     margin-left: 30px;
@@ -160,3 +214,5 @@ nav{
     background-color: #833d42;
     color: #e8edec;
 }
+
+/*MOBILE BROWSING*/

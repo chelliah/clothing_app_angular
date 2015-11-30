@@ -1,11 +1,24 @@
-html, body{
-    background-color: #E8EDEC;
+body{
+    /*background-color: #E8EDEC;*/
+    background: #E8EDEC url("../images/45degreee_fabric.png") repeat;
+
 }
+
+img {
+    /* position: absolute; */
+    width: 50%;
+    margin-left: 24%;
+    margin-top: 15vh;
+    /* align-self: center; */
+    /* text-align: center; */
+    /* margin: 0 auto; */
+}
+
 .login {
     background-color: #A04152;
     border-radius: 10px;
     text-align: center;
-    margin-top: 25vh;
+    margin-top: 10vh;
     width: 50%;
     padding-bottom: 30px;
 }

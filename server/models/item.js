@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var ItemSchema = new Schema({
-    user_id: { type: String, ref: 'User' , required: true},
+    user_id: { type: String, ref: 'User', required: true},
     url: {type: String, required: true},
     name: {type: String, required: true},
     gender: {type: String},
