@@ -55,12 +55,6 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
 
     };
 
-    //$scope.on('update', function(){
-    //    $scope.updateUserData();
-    //})
-
-
-
 }]);
 
 

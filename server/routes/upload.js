@@ -14,7 +14,6 @@ cloudinary.config({
     api_secret: '5MCQwZGVGX_z2N5Cp74rwE_-oVI'
 });
 
-
 //ADD NEW ITEM
 router.post('/url', uploaded.single('file'), function(req,res){
     console.log(req.file);
@@ -25,6 +24,4 @@ router.post('/url', uploaded.single('file'), function(req,res){
 });
 
 
-module.exports = router;/**
- * Created by aronthomas on 12/1/15.
- */
+module.exports = router;
