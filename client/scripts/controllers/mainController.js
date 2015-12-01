@@ -113,6 +113,7 @@ myApp.controller('ViewItemController', ["$scope", "$http", "$uibModalInstance", 
     $scope.user = {};
     $scope.dataService = DataService;
 
+    //FINDS USER SELLING THE ITEM
     $scope.findUser = function(){
         return $http.get('/user/seller', {params: {id: item.user_id}}).then(function(response){
             console.log("the seller", response);

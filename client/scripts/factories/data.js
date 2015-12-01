@@ -95,8 +95,6 @@ myApp.factory('DataService', ['$http', function($http){
     };
 
 
-
-
     //PUBLIC
     var publicApi = {
         retrieveData: function(){

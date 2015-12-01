@@ -63,6 +63,15 @@ module.exports = function(grunt){
                 ],
                 dest: "server/public/vendors/"
             },
+            angularUpload: {
+                expand: true,
+                cwd: 'node_modules/ng-file-upload/dist/',
+                src: [
+                    "ng-file-upload.min.js",
+                    "ng-file-upload-shim.min.js"
+                ],
+                dest: "server/public/vendors/"
+            },
             fontAwesome: {
                 expand: true,
                 cwd: 'node_modules/font-awesome/css/',

@@ -1,7 +1,7 @@
 /**
  * Created by aronthomas on 11/22/15.
  */
-myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataService", function($scope, $http, $uibModal,DataService){
+myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataService", function($scope, $http, $uibModal, DataService){
     console.log('ur in the closet');
 
     //LOAD IN DATASERVICE DATA
@@ -13,14 +13,12 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
         })
     };
 
-
     if($scope.dataService.userItems() === undefined){
         $scope.updateItemData();
     }
 
     $scope.items = $scope.dataService.userItems();
     console.log($scope.items);
-
 
 
     //SET MODAL FUNCTIONALITY
@@ -31,9 +29,9 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
             controller: 'AddItemController',
             size: size,
             resolve: {
-                items: function(){
-                    return $scope.items;
-                }
+                //items: function(){
+                //    return $scope.items;
+                //}
             }
         });
 
@@ -66,7 +64,7 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
 }]);
 
 
-myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "DataService", function ($scope, $http, $uibModalInstance, DataService) {
+myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "DataService", "Upload", function ($scope, $http, $uibModalInstance, DataService, Upload) {
 
     $scope.item = {};
 
@@ -76,16 +74,27 @@ myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "
 
     $scope.sizes = $scope.dataService.sizeData();
 
+    //UPLOAD FUNCTION
+    $scope.upload = function () {
+        return Upload.upload({
+            url: '../upload/url',
+            data: {file: $scope.file}
+        }).success(function(data){
+            console.log(data, 'uploaded');
+            console.log('item before insertion', $scope.item);
+            $scope.item.url = data.secure_url;
+            console.log('item after insertion', $scope.item);
+            $http.post('/item',$scope.item).then(function(response){
+                console.log(response, 'posted');
+            });
+            $scope.item = {};
+        })
+    };
 
-
+    //OK FUNCTION
     $scope.ok = function () {
         console.log($scope.item);
-        $http.post('/item',$scope.item).then(function(response){
-            console.log("WAIT AM I ADDING AN ITEM ACCIDENTALLY");
-            console.log(response);
-        });
-        $scope.item = {};
-
+        $scope.upload();
         $uibModalInstance.close('submitted');
     };
 

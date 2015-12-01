@@ -9,6 +9,7 @@ var session = require('express-session');
 var register = require('./routes/register');
 var user = require('./routes/user');
 var item = require('./routes/item');
+var upload = require('./routes/upload');
 var index = require('./routes/index');
 
 
@@ -17,6 +18,7 @@ app.set("port", (process.env.PORT || 5000));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({expanded: true}));
+
 
 // Passport Session Configuration //
 app.use(session({
@@ -32,6 +34,7 @@ app.use(passport.session());
 
 // Routes
 app.use('/register', register);
+app.use('/upload', upload);
 app.use('/user', user);
 app.use('/item', item);
 app.use('/', index);
