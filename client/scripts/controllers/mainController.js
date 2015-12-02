@@ -15,10 +15,7 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     $scope.displayPage = 1;
     $scope.order = 'price';
 
-    //
-    $scope.searchItems = function(){
-        console.log($scope.search);
-    }
+
 
     //PAGE CHANGE FUNCTION
     $scope.pageChanged = function(){
@@ -74,10 +71,10 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
 
     //RETURNS QUERY OBJECT CREATED BY SIDEBAR FILTER
     $scope.logFilter = function(){
-        console.log($scope.itemFilter);
+        //console.log($scope.itemFilter);
         var query = {};
         for(var field in $scope.itemFilter){
-            console.log(field);
+            //console.log(field);
             query[field] = [];
             for (var term in $scope.itemFilter[field]){
                 if($scope.itemFilter[field][term]){
@@ -87,27 +84,42 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
         }
 
         for(field in query){
-            console.log(field);
+            //console.log(field);
             $scope.query=false;
             for (var i = 0; i<query[field].length; i++){
                 if(query[field][i]){
                     $scope.query=true;
-                    console.log('found one!');
+                    //console.log('found one!');
                     break;
                 }
             }
-            console.log('results', $scope.query);
+            //console.log('results', $scope.query);
         }
 
         if($scope.query){
             $scope.dataService.queryItems(query).then(function(){
+                $scope.items = $scope.dataService.saleItems();
+                //console.log($scope.items);
+            });
+        }else{
+            $scope.updateSaleData();
+        }
+
+    };
+
+
+    //SEARCH ITEMS USING SEARCH BAR
+    $scope.searchItems = function(){
+        console.log($scope.search);
+        if($scope.search){
+            $scope.dataService.searchItems($scope.search).then(function(){
                 $scope.items = $scope.dataService.saleItems();
                 console.log($scope.items);
             });
         }else{
             $scope.updateSaleData();
         }
-
+        $scope.search = '';
     };
 
 }]);

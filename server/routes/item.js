@@ -3,6 +3,7 @@ var multer = require('multer');
 var router = express.Router();
 var User = require('../models/user');
 var Item = require('../models/item');
+var Field = require('../models/field')
 var cloudinary = require('cloudinary');
 
 cloudinary.config({
@@ -22,14 +23,14 @@ router.get('/sale', function(req,res){
     })
 });
 
-var convertQuery = function(query){
-    console.log('preconverted', query);
-    if(typeof query == String){
+var convertQuery = function(query, queryName){
+    var field = Field.getLocalField(queryName);
+    if(query == undefined){
+        //console.log('its undefined');
+        return field;
+    }else if(typeof query === 'string'){
         //console.log('its a string!');
         return new Array(query);
-    }else if(query == undefined){
-        //console.log('its undefined');
-        return [undefined];
     }else{
         return query;
     }
@@ -37,13 +38,13 @@ var convertQuery = function(query){
 
 //QUERY
 router.get('/query', function(req,res){
-    console.log(req.query);
+    //console.log(req.query);
     Item.find({
-        $or: [
-            {gender: {$in : convertQuery(req.query.gender)}},
-            {type: {$in : convertQuery(req.query.type)}},
-            {condition: {$in : convertQuery(req.query.condition)}},
-            {size: {$in : convertQuery(req.query.size)}}
+        $and: [
+            {gender: {$in : convertQuery(req.query.gender, 'gender')}},
+            {type: {$in : convertQuery(req.query.type, 'type')}},
+            {condition: {$in : convertQuery(req.query.condition, 'condition')}},
+            {size: {$in : convertQuery(req.query.size, 'size')}}
         ]
     }).where({user_id: {$ne: req.user._id}}).exec(function(err,items){
         if(err) console.log(err);
@@ -51,6 +52,16 @@ router.get('/query', function(req,res){
         res.send(items)
     })
 });
+
+//SEARCH
+router.get('/search', function(req,res){
+   Item.find({name: req.query.search}).where({user_id: {$ne: req.user._id}}).exec(function(err,items){
+       if(err) console.log(err);
+       //console.log("here are the returned results", items);
+       res.send(items)
+   })
+});
+
 //GET USER ITEMS
 router.get('/user', function(req,res){
     Item.find({user_id: req.user._id}).exec(function(err,items){

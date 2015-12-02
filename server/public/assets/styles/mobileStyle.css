@@ -130,5 +130,12 @@ and (min-resolution: 192dpi) {
         height: 300px;
         margin-bottom: 20px;
     }
+    #itemsPerPageLabel{
+        display: none;
+
+    }
+    #pagination {
+        text-align: center;
+    }
 }
 

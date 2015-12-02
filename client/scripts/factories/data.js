@@ -66,6 +66,14 @@ myApp.factory('DataService', ['$http', function($http){
       })
     };
 
+    var searchItems = function(query){
+        return $http.get('/item/search', {params: {search : query}}).then(function(response){
+            console.log(response);
+            items = response.data;
+            return response.data;
+        })
+    };
+
     //GET DATA FOR USER IN SESSION
     var getUserData = function(){
         return $http.get('/user').then(function(response){
@@ -123,6 +131,9 @@ myApp.factory('DataService', ['$http', function($http){
         },
         queryItems: function(query){
             return queryItems(query);
+        },
+        searchItems: function(query){
+            return searchItems(query);
         }
     };
 

@@ -11,6 +11,8 @@ var user = require('./routes/user');
 var item = require('./routes/item');
 var upload = require('./routes/upload');
 var index = require('./routes/index');
+var logout = require('./routes/logout');
+
 
 
 // App Set //
@@ -37,7 +39,9 @@ app.use('/register', register);
 app.use('/upload', upload);
 app.use('/user', user);
 app.use('/item', item);
+app.use('/logout', logout);
 app.use('/', index);
+
 
 // Mongo Connection //
 var mongoURI = "mongodb://localhost:27017/clothing_db_01";

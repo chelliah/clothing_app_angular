@@ -1,4 +1,19 @@
 <ul class="nav-links nav nav-pills">
-    <li><a class='link nav nav-pills' href="#myCloset">My Closet</a></li>
-    <li><a class='link nav nav-pills' href="#userAccount">My Account</a></li>
+    <li>
+        <button class="btn info-button nav-button">
+            <a class='link' href="#myCloset">My Closet</a>
+        </button>
+
+    </li>
+    <li>
+        <button class="btn info-button nav-button">
+            <a class='link' href="#userAccount">My Account</a>
+        </button>
+
+    </li>
+    <li>
+        <form action="/logout" method="get">
+            <button class="btn info-button nav-button" id="logoutButton" type="submit">Log Out</button>
+        </form>
+    </li>
 </ul>

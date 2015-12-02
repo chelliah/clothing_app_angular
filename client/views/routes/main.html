@@ -1,8 +1,17 @@
 <!--FILTER SIDEBAR-->
 <div id="sidebarFilter" class="col-md-3 col-sm-4 col-xs-12 sidebar">
 
+    <p class='lead sidebar-header' id="searchHeader">Search</p>
+    <form class="search-form" novalidate>
+        <div class="form-group has-feedback search">
+            <!--<label class="control-label">Search</label>-->
+            <input type="search" name="search" class="form-control search-bar" ng-model="search" placeholder="Search">
+            <!--<i class="glyphicon glyphicon-search form-control-feedback" ng-click="searchItems()"></i>-->
+            <button class="btn info-button search-button" ng-click="searchItems()"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    </form>
 
-    <p class='lead' id="sidebarFilterHeader">Refine By</p>
+    <p class='lead sidebar-header' id="filterHeader">Refine By</p>
     <uib-accordion>
         <uib-accordion-group is-open="status.open">
             <uib-accordion-heading>
@@ -58,20 +67,13 @@
         </uib-accordion-group>
     </uib-accordion>
     <!--<div id="filterButton" class="btn info-button" ng-click="logFilter()">Log Filters</div>-->
-    <form class="search-form" novalidate>
-        <div class="form-group has-feedback search">
-            <!--<label class="control-label">Search</label>-->
-            <input type="search" name="search" class="form-control search-bar" ng-model="search" placeholder="Search">
-            <!--<i class="glyphicon glyphicon-search form-control-feedback" ng-click="searchItems()"></i>-->
-            <button class="btn info-button search-button"><span class="glyphicon glyphicon-search"></span></button>
-        </div>
-    </form>
+
 </div>
 
 <div id="boxContainer" class=" col-md-9 col-sm-8 col-xs-12">
     <div class='row' id="sortBox">
         <div id="itemBtnGroup">
-            <label class="lead">Items Per Page: </label>
+            <label class="lead" id="itemsPerPageLabel">Items Per Page: </label>
             <div class="btn-group" id="itemBtn">
                 <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="6" ng-click="pageChanged()">6</label>
                 <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="12" ng-click="pageChanged()">12</label>
