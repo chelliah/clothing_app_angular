@@ -1,18 +1,20 @@
 <div class="view-item">
     <h1>{{item.name}}</h1>
-    <img ng-src="{{item.url}}" height="200" width="auto">
-    <p>Gender: {{item.gender}}</p>
-    <p>Size: {{item.size}}</p>
-    <p>Type: {{item.type}}</p>
-    <p>Condition: {{item.condition}}</p>
-    <p>Additional Comments: {{item.comments}}</p>
-    <h4>Seller: {{user.username}}</h4>
-    <h4>Price: {{item.price | currency:$}}</h4>
+    <img ng-src="{{item.url}}" height="200" width="auto" class="col-md-6">
+    <div id="itemInfo" class="col-md-6">
+        <h2>Seller: {{user.username}}</h2>
+        <h2>Price: {{item.price | currency:$}}</h2>
+        <p class="lead">Gender: {{item.gender}}</p>
+        <p class="lead">Size: {{item.size}}</p>
+        <p class="lead">Type: {{item.type}}</p>
+        <p class="lead">Condition: {{item.condition}}</p>
+        <p class="lead">Additional Comments:</p><p> {{item.comments}}</p>
+    </div>
 
     <div class="buttons">
         <button class ='btn btn-primary' type="submit" ng-click="ok()">
             <a HREF="mailto:{{user.email}}?subject=Interest in purchasing {{item.name}} on clothing website
-            &body=Hi! I am interested in purchasing the {{item.name}} you listed on the clothing website">Email Seller</a>
+            &body=Hi! I am interested in purchasing the {{item.name}} you listed on the clothing website Fuschia">Email Seller</a>
         </button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>

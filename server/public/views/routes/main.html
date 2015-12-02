@@ -1,14 +1,16 @@
 <!--FILTER SIDEBAR-->
 <div id="sidebarFilter" class="col-md-3 col-sm-4 col-xs-12 sidebar">
-    <h1 id="sidebarFilterHeader">Filter Items</h1>
+
+
+    <p class='lead' id="sidebarFilterHeader">Refine By</p>
     <uib-accordion>
         <uib-accordion-group is-open="status.open">
             <uib-accordion-heading>
                 Gender <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
-            <div class="check-box"><input type="checkbox" value="Male" ng-model="itemFilter.gender['Male']"> Male</div>
-            <div class="check-box"><input type="checkbox" value="Female" ng-model="itemFilter.gender['Female']"> Female</div>
-            <div class="check-box"><input type="checkbox" value="Neither/Unisex" ng-model="itemFilter.gender['Neither/Unisex']"> Neither/Unisex</div>
+            <div class="check-box"><input type="checkbox" value="Male" ng-model="itemFilter.gender['Male']" ng-change="logFilter()"> Male</div>
+            <div class="check-box"><input type="checkbox" value="Female" ng-model="itemFilter.gender['Female']" ng-change="logFilter()"> Female</div>
+            <div class="check-box"><input type="checkbox" value="Neither/Unisex" ng-model="itemFilter.gender['Neither/Unisex']" ng-change="logFilter()"> Neither/Unisex</div>
         </uib-accordion-group>
     </uib-accordion>
     <uib-accordion>
@@ -16,9 +18,9 @@
             <uib-accordion-heading>
                 Condition <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
-            <div class="check-box"><input type="checkbox" value="Like New" ng-model="itemFilter.condition['Like New']"> Like New</div>
-            <div class="check-box"><input type="checkbox" value="Good" ng-model="itemFilter.condition['Good']"> Good</div>
-            <div class="check-box"><input type="checkbox" value="Well Worn" ng-model="itemFilter.condition['Well Worn']"> Well Worn</div>
+            <div class="check-box"><input type="checkbox" value="Like New" ng-model="itemFilter.condition['Like New']" ng-change="logFilter()"> Like New</div>
+            <div class="check-box"><input type="checkbox" value="Good" ng-model="itemFilter.condition['Good']" ng-change="logFilter()"> Good</div>
+            <div class="check-box"><input type="checkbox" value="Well Worn" ng-model="itemFilter.condition['Well Worn']" ng-change="logFilter()"> Well Worn</div>
         </uib-accordion-group>
     </uib-accordion>
     <uib-accordion>
@@ -32,7 +34,7 @@
                         {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': child.open, 'glyphicon-chevron-right': !child.open}"></i>
                     </uib-accordion-heading>
                     <div ng-repeat="field in category.list">
-                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.type[field]"> {{field}} </div>
+                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.type[field]" ng-change="logFilter()"> {{field}} </div>
                     </div>
                 </uib-accordion-group>
             </uib-accordion>
@@ -49,25 +51,35 @@
                         {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': child.open, 'glyphicon-chevron-right': !child.open}"></i>
                     </uib-accordion-heading>
                     <div ng-repeat="field in category.list">
-                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.size[field]"> {{field}}</div>
+                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.size[field]" ng-change="logFilter()"> {{field}}</div>
                     </div>
                 </uib-accordion-group>
             </uib-accordion>
         </uib-accordion-group>
     </uib-accordion>
-    <div id="filterButton" class="btn info-button" ng-click="logFilter()">Log Filters</div>
+    <!--<div id="filterButton" class="btn info-button" ng-click="logFilter()">Log Filters</div>-->
+    <form class="search-form" novalidate>
+        <div class="form-group has-feedback search">
+            <!--<label class="control-label">Search</label>-->
+            <input type="search" name="search" class="form-control search-bar" ng-model="search" placeholder="Search">
+            <!--<i class="glyphicon glyphicon-search form-control-feedback" ng-click="searchItems()"></i>-->
+            <button class="btn info-button search-button"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    </form>
 </div>
 
 <div id="boxContainer" class=" col-md-9 col-sm-8 col-xs-12">
     <div class='row' id="sortBox">
-        <div class="btn-group" id="itemBtn">
-            <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="6" ng-click="pageChanged()">6</label>
-            <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="12" ng-click="pageChanged()">12</label>
-            <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="24" ng-click="pageChanged()">24</label>
+        <div id="itemBtnGroup">
+            <label class="lead">Items Per Page: </label>
+            <div class="btn-group" id="itemBtn">
+                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="6" ng-click="pageChanged()">6</label>
+                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="12" ng-click="pageChanged()">12</label>
+                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="24" ng-click="pageChanged()">24</label>
+            </div>
         </div>
-        <div id="sortBy">
-            <!--<p>Sort By:</p>-->
-            <select id="itemSort" ng-model="order" class="form-control">
+        <div id="sortByGroup">
+            <select id="sortBy" ng-model="order" class="form-control">
                 <option value="price" selected="selected">Price (Low to High)</option>
                 <option value="-price">Price (High to Low)</option>
                 <option value="-added">Date Added (Newest First)</option>

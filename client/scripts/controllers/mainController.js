@@ -6,6 +6,7 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     $scope.itemFilter = {};
     $scope.user = {};
     $scope.items = {};
+    $scope.search = undefined;
     $scope.query = false;
 
 
@@ -13,6 +14,11 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     $scope.itemsPerPage = 12;
     $scope.displayPage = 1;
     $scope.order = 'price';
+
+    //
+    $scope.searchItems = function(){
+        console.log($scope.search);
+    }
 
     //PAGE CHANGE FUNCTION
     $scope.pageChanged = function(){

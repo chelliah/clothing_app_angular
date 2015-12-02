@@ -2,7 +2,7 @@
     <h1>Add an Item for sale</h1>
     <form novalidate name='itemForm' class="form-group add-item-form">
 
-        <div class="form-group" ng-class="{ 'has-error' : itemForm.name.$invalid && !itemForm.name.$pristine }">
+        <div class="form-group add-item-field" ng-class="{ 'has-error' : itemForm.name.$invalid && !itemForm.name.$pristine }">
             <label>Item Name: </label>
             <input type="text" name="name" class="form-control" ng-model="item.name" required>
             <p ng-show="itemForm.name.$invalid && !itemForm.name.$pristine" class="help-block">Item name is required.</p>
@@ -30,58 +30,82 @@
             <!--<img ng-show="itemForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="item.file = null" ng-show="item.file">Remove</button>-->
         <!--</div>-->
 
-        <div class="form-group" ng-class="{'has-error': itemForm.file.$pristine}">
+        <div class="form-group add-item-field" ng-class="{'has-error': itemForm.file.$pristine}">
             <label>Select File:</label>
-            <input type="file" ng-model="file" ngf-select="" name="file" accept="image/*" required="" class="ng-pristine ng-invalid ng-invalid-required">
-            <p ng-show="itemForm.file.$error.required">*required</p><br>
-            <img ng-show="itemForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="item.file = null" ng-show="item.file">Remove</button>
+            <div  id="selectFile">
+                <div ng-hide="itemForm.file.$valid" class="btn btn-default btn-file">
+                    Browse... <input type="file" ng-model="file" ngf-select="" name="file" accept="image/*" required="" class="ng-pristine ng-invalid ng-invalid-required">
+                </div>
+                <p ng-show="itemForm.file.$error.required">*required</p>
+                <div  ng-show="itemForm.file.$valid">
+                    <img ngf-thumbnail="file" height='40' class="thumb">
+                    <button class='btn btn-danger' ng-click="file = null" ng-show="file">Remove</button>
+                </div>
+            </div>
         </div>
 
-
-        <div class="form-group" ng-class="{'has-error': !itemForm.gender.$pristine}">
+        <div class="form-group add-item-field">
             <label>Gender:</label>
-            <input type="radio" name="gender" value="Male" ng-model="item.gender" required>Male
-            <input type="radio" name="gender" value="Female" ng-model="item.gender" required>Female
-            <input type="radio" name="gender" value="Neither/Unisex" ng-model="item.gender" required>Neither/Unisex
-            <p ng-show="!itemForm.gender.$pristine" class="help-block">Gender field is required.</p>
+            <div class="radio-inline">
+                <input type="radio" name="gender" value="Male" ng-model="item.gender" required>
+                <p> Male</p>
+            </div>
+            <div class="radio-inline">
+                <input type="radio" name="gender" value="Female" ng-model="item.gender" required>
+                <p> Female</p>
+            </div>
+            <div class="radio-inline">
+                <input type="radio" name="gender" value="Neither/Unisex" ng-model="item.gender" required>
+                <p> Neither/Unisex</p>
+            </div>
+
+            <!--<p ng-show="itemForm.gender.$pristine" class="help-block">Gender field is required.</p>-->
         </div>
 
-
-        <div>
+        <div class="add-item-field">
             <label for="type">Type:</label>
-            <select id="type" ng-model="item.type" required>
+            <select class="form-control" id="type" ng-model="item.type" required>
                 <optgroup ng-repeat="category in types" label="{{category.name}}">
                     <option ng-repeat="type in category.list" label="{{type}}" value ='{{type}}'></option>
                 </optgroup>
             </select>
         </div>
 
-        <div>
+        <div class="add-item-field">
             <label for="size">Size:</label>
-            <select id="size" ng-model="item.size" required>
+            <select class="form-control" id="size" ng-model="item.size" required>
                 <optgroup ng-repeat="category in sizes" label="{{category.name}}">
                     <option ng-repeat="size in category.list" label="{{size}}" value ='{{size}}'></option>
                 </optgroup>
             </select>
         </div>
 
-        <div>
+        <div class="add-item-field">
             <label>Condition:</label>
-            <input type="radio" name="condition" value="Like New" ng-model="item.condition" required checked>Like New
-            <input type="radio" name="condition" value="Good" ng-model="item.condition" required>Good
-            <input type="radio" name="condition" value="Well Worn" ng-model="item.condition" required>Well Worn
+            <div class="radio-inline">
+                <input type="radio" name="condition" value="Like New" ng-model="item.condition" required>
+                <p> Like New</p>
+            </div>
+            <div class="radio-inline">
+                <input type="radio" name="condition" value="Good" ng-model="item.condition" required>
+                <p> Good</p>
+            </div>
+            <div class="radio-inline">
+                <input type="radio" name="condition" value="Well Worn" ng-model="item.condition" required>
+                <p> Well Worn</p>
+            </div>
         </div>
 
 
-        <div class="form-group" ng-class="{ 'has-error' : itemForm.price.$invalid && !itemForm.price.$pristine }">
+        <div class="form-group add-item-field" ng-class="{ 'has-error' : itemForm.price.$invalid && !itemForm.price.$pristine }">
             <label>Price: </label>
             <input type="number" name="price" class="form-control" ng-model="item.price" required>
             <p ng-show="itemForm.price.$invalid && !itemForm.price.$pristine" class="help-block">Price is required.</p>
         </div>
 
-        <div class="form-group">
+        <div class="form-group add-item-field">
             <label for="comments">Additional Comments:</label>
-            <textarea name="comments" id="comments" ng-model="item.comments"></textarea>
+            <textarea class="form-control" name="comments" id="comments" ng-model="item.comments"></textarea>
         </div>
 
 
