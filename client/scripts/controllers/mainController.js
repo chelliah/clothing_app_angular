@@ -1,7 +1,7 @@
 /**
  * Created by aronthomas on 11/22/15.
  */
-myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window", "DataService", function($scope, $http, $uibModal, $window, DataService){
+myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$anchorScroll", "$location", "DataService", function($scope, $http, $uibModal, $window, $anchorScroll, $location, DataService){
     $scope.dataService = DataService;
     $scope.itemFilter = {};
     $scope.user = {};
@@ -55,7 +55,11 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window", "
     //PAGE CHANGE FUNCTION
     $scope.pageChanged = function(){
         console.log('page changed to', $scope.currentPage);
-        w.scrollTo(0,200);
+        //SCROLL TO TOP
+        $location.hash('boxContainer');
+
+        // call $anchorScroll()
+        $anchorScroll();
     };
 
     //MODAL RESIZE
