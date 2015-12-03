@@ -235,18 +235,23 @@ nav{
 .user-item{
     box-sizing: border-box;
     width: 90%;
-    margin: 0 auto;
-    border-bottom: 2px solid #582c2c;
+    margin: 15px auto;
+    /*border-bottom: 2px solid #582c2c;*/
+    background-color: rgba(160,65,82,.3);
     padding: 10px 0;
     height: 120px;
+    border-radius: 5px;
+    -webkit-box-shadow:  0px 5px 13px #aaaaaa;
+    -moz-box-shadow:  0px 5px 13px #aaaaaa;
+    box-shadow:  0px 5px 13px #aaaaaa;
 }
 
-.user-item:nth-child(odd){
-    background: -webkit-linear-gradient(left, rgba(160,65,82,0), rgba(160,65,82,.3) , rgba(160,65,82,0)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3), rgba(160,65,82,0)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3), rgba(160,65,82,0)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3) , rgba(160,65,82,0)); /* Standard syntax */
-}
+/*.user-item:nth-child(odd){*/
+    /*background: -webkit-linear-gradient(left, rgba(160,65,82,0), rgba(160,65,82,.3) , rgba(160,65,82,0)); /!* For Safari 5.1 to 6.0 *!/*/
+    /*background: -o-linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3), rgba(160,65,82,0)); /!* For Opera 11.1 to 12.0 *!/*/
+    /*background: -moz-linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3), rgba(160,65,82,0)); /!* For Firefox 3.6 to 15 *!/*/
+    /*background: linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3) , rgba(160,65,82,0)); /!* Standard syntax *!/*/
+/*}*/
 .user-item *{
     display: inline;
     position: absolute;
@@ -254,16 +259,17 @@ nav{
 
 .user-item img{
     left: 10%;
+    border-radius: 5px;
 }
 
 .user-item p{
     left: 30%;
-    margin-top: 2%;
+    margin-top: 25px;
 }
 
 .user-item button{
     left: 75%;
-    margin-top: 2%;
+    margin-top: 25px;
 }
 
 
@@ -272,8 +278,9 @@ nav{
 }
 
 #addItemButton{
-    margin-top: 25px;
+    margin-top: 15px;
     margin-left: 5%;
+    margin-bottom: 15px;
 }
 /*ADD ITEM MODAL STYLING*/
 
@@ -335,7 +342,9 @@ nav{
     text-align: center;
 }
 
-
+.view-item .lead {
+    font-size: 18px;
+}
 .view-item .buttons{
     width: 50%;
     text-align: center;

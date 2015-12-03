@@ -58,7 +58,6 @@ router.get('/search', function(req,res){
     var search = req.query.search.toLowerCase() + "{1,}";
    Item.find({name: {$regex: search}}).where({user_id: {$ne: req.user._id}}).exec(function(err,items){
        if(err) console.log(err);
-       //console.log("here are the returned results", items);
        res.send(items)
    })
 });

@@ -180,6 +180,38 @@ and (min-resolution: 192dpi) {
         text-align: center;
     }
 
+
+
+    /*MY CLOSET PAGE*/
+    /*MY CLOSET ITEMS*/
+    .user-item{
+        height: 120px;
+
+    }
+
+    .user-item *{
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        text-align: center;
+    }
+
+    .user-item img{
+        left: 5%;
+        float: left;
+        border-radius: 5px;
+    }
+
+    .user-item p{
+        left: 0;
+        margin-top: 10px;
+    }
+
+    .user-item button{
+        left: 0;
+        margin-top: 20px;
+    }
+
 }
 
 @media screen and (max-width: 400px){
