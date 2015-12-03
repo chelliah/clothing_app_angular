@@ -1,7 +1,7 @@
 /**
  * Created by aronthomas on 11/22/15.
  */
-myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataService", function($scope, $http, $uibModal, DataService){
+myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "$window", "DataService", function($scope, $http, $uibModal, $window, DataService){
     console.log('ur in the closet');
 
     //LOAD IN DATASERVICE DATA
@@ -22,12 +22,13 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
 
 
     //SET MODAL WINDOW SIZE
-    var w = window,
+    var w = angular.element($window),
         d = document,
         e = d.documentElement,
         g = d.getElementsByTagName('body')[0],
         x = w.innerWidth || e.clientWidth || g.clientWidth,
         y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
 
     $scope.modalSize = function(){
         if(x>767){

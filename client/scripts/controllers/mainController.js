@@ -1,7 +1,7 @@
 /**
  * Created by aronthomas on 11/22/15.
  */
-myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService", function($scope, $http, $uibModal, DataService){
+myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window", "DataService", function($scope, $http, $uibModal, $window, DataService){
     $scope.dataService = DataService;
     $scope.itemFilter = {};
     $scope.user = {};
@@ -9,22 +9,23 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     $scope.search = undefined;
     $scope.query = false;
 
-
     //INITIALIZE ITEM DISPLAY OPTIONS
     $scope.itemsPerPage = 12;
     $scope.displayPage = 1;
     $scope.order = 'price';
 
+    //SET MODAL WINDOW SIZE
+    var w = angular.element($window),
+        d = document,
+        e = d.documentElement,
+        g = d.getElementsByTagName('body')[0],
+        x= w.innerWidth || e.clientWidth || g.clientWidth;
 
-
-    //PAGE CHANGE FUNCTION
-    $scope.pageChanged = function(){
-        console.log('page changed to', $scope.currentPage);
-    };
 
     //PULL IN ITEM DATA CONSTANTS
     $scope.sizes = $scope.dataService.sizeData();
     $scope.types = $scope.dataService.typeData();
+
 
     //BRINGS IN USER DATA
     $scope.updateUserData = function(){
@@ -50,14 +51,14 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     }
     $scope.updateSaleData();
 
-    //SET MODAL WINDOW SIZE
-    var w = window,
-        d = document,
-        e = d.documentElement,
-        g = d.getElementsByTagName('body')[0],
-        x = w.innerWidth || e.clientWidth || g.clientWidth,
-        y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
+    //PAGE CHANGE FUNCTION
+    $scope.pageChanged = function(){
+        console.log('page changed to', $scope.currentPage);
+        w.scrollTo(0,200);
+    };
+
+    //MODAL RESIZE
     $scope.modalSize = function(){
         if(x>767){
             return 'md';
@@ -65,6 +66,24 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
             return 'sm'
         }
     };
+
+    //TOGGLE FILTER FOR MOBILE/SMALL SCREENS
+    $scope.toggle = true;
+
+    w.bind('resize', function(){
+        console.log($scope.toggle);
+        console.log('resize');
+        x= w.innerWidth || e.clientWidth || g.clientWidth;
+        console.log('width', x);
+        if(x>767){
+            $scope.$apply(function(){
+                $scope.toggle = true;
+            })
+        }
+
+    });
+
+
     //MODAL FUNCTIONS
     $scope.open = function (item) {
         var modalInstance = $uibModal.open({
@@ -136,6 +155,7 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
         }
         $scope.search = '';
     };
+
 
 }]);
 

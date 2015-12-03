@@ -1,5 +1,8 @@
 <!--FILTER SIDEBAR-->
-<div id="sidebarFilter" class="col-md-3 col-sm-4 col-xs-12 sidebar">
+<div class="col-md-12 row toggle-filter" ng-click="toggle = !toggle">
+    <p class="lead">TOGGLE FILTER <span class='glyphicon' ng-class="{'glyphicon-chevron-down': toggle, 'glyphicon-chevron-up': !toggle}"></span></p>
+</div>
+<div id="sidebarFilter" class="col-md-3 col-sm-4 col-xs-12 sidebar" ng-show="toggle">
 
     <p class='lead sidebar-header' id="searchHeader">Search</p>
     <form class="search-form" novalidate>

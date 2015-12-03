@@ -68,6 +68,13 @@ nav{
 }
 
 /*MAIN PAGE STYLE*/
+/*TOGGLE FILTER*/
+.toggle-filter{
+    margin: 0 auto;
+    display: none;
+    text-align: center;
+}
+
 /*SIDEBAR*/
 
 #sidebarFilter {
@@ -133,6 +140,10 @@ nav{
 
 
 /*MAIN STYLING*/
+
+#itemsPerPageLabel{
+    font-size: 18px;
+}
 #boxContainer{
     padding-top: 10px;
     height: 100vh;
@@ -324,8 +335,7 @@ nav{
     text-align: center;
 }
 
-/*.view-item img {*/
-/*}*/
+
 .view-item .buttons{
     width: 50%;
     text-align: center;
