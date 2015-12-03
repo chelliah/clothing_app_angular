@@ -21,18 +21,34 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "DataServ
     console.log($scope.items);
 
 
+    //SET MODAL WINDOW SIZE
+    var w = window,
+        d = document,
+        e = d.documentElement,
+        g = d.getElementsByTagName('body')[0],
+        x = w.innerWidth || e.clientWidth || g.clientWidth,
+        y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    $scope.modalSize = function(){
+        if(x>767){
+            return 'lg';
+        }else{
+            return 'sm';
+        }
+    };
+
     //SET MODAL FUNCTIONALITY
-    $scope.open = function (size) {
+    $scope.open = function () {
         var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'templates/addItemModal.html',
             controller: 'AddItemController',
-            size: size,
-            resolve: {
-                //items: function(){
-                //    return $scope.items;
-                //}
-            }
+            size: $scope.modalSize()
+            //resolve: {
+            //    items: function(){
+            //        return $scope.items;
+            //    }
+            //}
         });
 
         modalInstance.result.then(function(){

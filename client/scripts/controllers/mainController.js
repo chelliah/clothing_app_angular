@@ -50,13 +50,28 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "DataService
     }
     $scope.updateSaleData();
 
+    //SET MODAL WINDOW SIZE
+    var w = window,
+        d = document,
+        e = d.documentElement,
+        g = d.getElementsByTagName('body')[0],
+        x = w.innerWidth || e.clientWidth || g.clientWidth,
+        y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
+    $scope.modalSize = function(){
+        if(x>767){
+            return 'md';
+        }else{
+            return 'sm'
+        }
+    };
     //MODAL FUNCTIONS
     $scope.open = function (item) {
         var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'templates/viewItemModal.html',
             controller: 'ViewItemController',
+            size: $scope.modalSize(),
             resolve: {
                 item: function(){
                     return item;
