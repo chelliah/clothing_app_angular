@@ -1,9 +1,11 @@
 <div class="items">
-    <h2 id="myClosetHeader">My Items</h2>
+    <h1 id="myClosetHeader">My Items</h1>
     <div ng-repeat="item in items" class="user-item">
         <img ng-src="{{item.url}}" height="100" width="auto">
-        <p class="lead">{{item.name}}</p>
-        <button class="btn btn-danger" ng-click="remove(item)">Remove</button>
+        <div class="user-item-info">
+            <p class="lead user-item-tag" >{{item.name}}</p>
+            <button class="btn btn-danger user-item-remove" ng-click="remove(item)">Remove</button>
+        </div>
     </div>
 </div>
 <div id='addItemButton' class="btn info-button" ng-click="open()">+ Add Item</div>

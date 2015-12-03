@@ -27,13 +27,13 @@ header{
 
 }
 
-h1 a{
-    color: #f2f2f2;
-}
-h1 a:hover {
-    color: #cdcdcd;
-    text-decoration: none;
-}
+/*h1 a{*/
+    /*color: #f2f2f2;*/
+/*}*/
+/*h1 a:hover {*/
+    /*color: #cdcdcd;*/
+    /*text-decoration: none;*/
+/*}*/
 
 .logo{
     float:left;
@@ -56,12 +56,14 @@ nav{
     /*padding: 0 15px;*/
 /*}*/
 
-/*.nav>li>a {*/
-    /*position: relative;*/
-    /*display: block;*/
-    /*padding: 10px 15px;*/
-    /*top: -20px;*/
-/*}*/
+.nav>li>a {
+    padding: 6px 15px;
+    font-size: 15px;
+}
+
+.nav>li>a:hover {
+    color: #3D2A37;
+}
 
 .nav-button {
     margin-top: -10px;
@@ -252,24 +254,32 @@ nav{
     /*background: -moz-linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3), rgba(160,65,82,0)); /!* For Firefox 3.6 to 15 *!/*/
     /*background: linear-gradient(left, rgba(160,65,82,0),rgba(160,65,82,.3) , rgba(160,65,82,0)); /!* Standard syntax *!/*/
 /*}*/
-.user-item *{
-    display: inline;
-    position: absolute;
-}
+
 
 .user-item img{
-    left: 10%;
+    float: left;
+    margin-left: 5%;
     border-radius: 5px;
 }
 
-.user-item p{
-    left: 30%;
-    margin-top: 25px;
+.user-item-info{
+    float:right;
+    width: 60%;
+    margin-right: 10%;
+
 }
 
-.user-item button{
-    left: 75%;
-    margin-top: 25px;
+.user-item-tag{
+    display: inline-block;
+    position: absolute;
+    margin-top: 3%;
+}
+
+.user-item-remove{
+    display: inline-block;
+    position: absolute;
+    margin-left: 45%;
+    margin-top: 3%;
 }
 
 

@@ -138,10 +138,23 @@ and (min-resolution: 192dpi) {
 }
 @media screen and (max-width:767px){
     /*TOGGLE FITLER*/
-    .toggle-filter{
+    .toggle-filter {
         display: inherit;
-        width: 80%;
+        width: 100%;
         padding-top: 10px;
+        background-color: #e8edec;
+        box-shadow: inset 0px 0px 14px #888888;
+        margin-bottom: 0;
+    }
+
+    .toggle-filter:hover, .toggle-filter:focus {
+        cursor: pointer;
+        background-color: #d0d5d4;
+        box-shadow: inset 0px 0px 30px #888888;
+    }
+    .toggle-filter:active {
+        background-color: #bbc0bf;
+        box-shadow: inset 0px 0px 30px #888888;
     }
 
     /*SIDEBAR*/
@@ -184,6 +197,12 @@ and (min-resolution: 192dpi) {
 
     /*MY CLOSET PAGE*/
     /*MY CLOSET ITEMS*/
+
+    #myClosetHeader{
+        text-align: center;
+    }
+
+
     .user-item{
         height: 120px;
 
@@ -197,20 +216,22 @@ and (min-resolution: 192dpi) {
     }
 
     .user-item img{
-        left: 5%;
-        float: left;
-        border-radius: 5px;
+        max-width: 44%;
     }
 
-    .user-item p{
-        left: 0;
-        margin-top: 10px;
+    .user-item-info{
+        padding-top: 2%;
+        float:right;
+        width: 50%;
     }
 
-    .user-item button{
-        left: 0;
-        margin-top: 20px;
+    .user-item-tag{
+        padding-bottom: 2%;
     }
+
+
+
+
 
 }
 

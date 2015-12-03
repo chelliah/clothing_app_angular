@@ -16,24 +16,24 @@
     <div class="container login">
         <h1 class="lead">Register New User</h1>
         <form action="/register" method="post">
-            <div>
+            <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" name="username" id="username" required>
+                <input class='form-control' type="text" name="username" id="username" placeholder="Enter a Username" required>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
+                <input class='form-control' type="password" name="password" id="password" placeholder="Enter a Password" required>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
+                <input class='form-control' type="email" name="email" id="email" placeholder="Enter your Email Address" required>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="location">Location:</label>
-                <input type="location" name="location" id="location" required>
+                <input class='form-control' type="location" name="location" id="location" placeholder="Enter your Location" required>
             </div>
 
             <input class='btn'  type="submit" value="Register"/>
