@@ -55,7 +55,8 @@ router.get('/query', function(req,res){
 
 //SEARCH
 router.get('/search', function(req,res){
-   Item.find({name: req.query.search}).where({user_id: {$ne: req.user._id}}).exec(function(err,items){
+    var search = req.query.search.toLowerCase() + "{1,}";
+   Item.find({name: {$regex: search}}).where({user_id: {$ne: req.user._id}}).exec(function(err,items){
        if(err) console.log(err);
        //console.log("here are the returned results", items);
        res.send(items)
@@ -85,7 +86,7 @@ router.post('/', function(req,res){
     var item = new Item({
         user_id: req.user._id,
         url: req.body.url,
-        name: req.body.name,
+        name: req.body.name.toLowerCase(),
         gender: req.body.gender,
         type: req.body.type,
         size: req.body.size,
