@@ -4,15 +4,18 @@
 myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$anchorScroll", "$location", "DataService", function($scope, $http, $uibModal, $window, $anchorScroll, $location, DataService){
     $scope.dataService = DataService;
     $scope.itemFilter = {};
-    $scope.user = {};
-    $scope.items = {};
+    $scope.user = undefined;
+    $scope.items = undefined;
+    //$scope.viewItems = undefined;
     $scope.search = undefined;
     $scope.query = false;
 
+
     //INITIALIZE ITEM DISPLAY OPTIONS
-    $scope.itemsPerPage = 12;
+    $scope.itemsPerPage = 6;
     $scope.displayPage = 1;
     $scope.order = 'price';
+
 
     //SET MODAL WINDOW SIZE
     var w = angular.element($window),
@@ -33,34 +36,51 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
             $scope.user = $scope.dataService.peopleData();
         })
     };
-    if($scope.dataService.peopleData() === undefined){
-        $scope.updateUserData();
-    }
-    $scope.updateUserData();
+
 
 
     //BRING IN SALE DATA
     $scope.updateSaleData = function(){
         $scope.dataService.getSaleItems().then(function(){
             $scope.items = $scope.dataService.saleItems();
-
+            //$scope.viewItems = $filter('limitTo')($scope.items, $scope.itemsPerPage, $scope.itemsPerPage*$scope.displayPage-1);
         });
     };
-    if($scope.dataService.saleItems() === undefined){
-        $scope.updateSaleData();
-    }
-    $scope.updateSaleData();
-
 
     //PAGE CHANGE FUNCTION
-    $scope.pageChanged = function(){
+    //$scope.pageChanged = function(){
+    //
+    //    //SCROLL TO TOP
+    //    $location.hash('boxContainer');
+    //
+    //    // call $anchorScroll()
+    //    $anchorScroll();
+    //
+    //
+    //};
+
+    $scope.$watch('displayPage', function(){
         console.log('page changed to', $scope.displayPage);
-        //SCROLL TO TOP
+
+        //Scroll to top
         $location.hash('boxContainer');
 
         // call $anchorScroll()
         $anchorScroll();
+    });
+
+    $scope.$watch('itemsPerPage', function(){
+        console.log('items per page changed to', $scope.itemsPerPage);
+
+        //$scope.$apply();
+    });
+
+    $scope.itemDisplayChange = function(){
+        console.log('displaying items per page', $scope.itemsPerPage);
     };
+
+
+
 
     //MODAL RESIZE
     $scope.modalSize = function(){
@@ -75,10 +95,10 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
     $scope.toggle = true;
 
     w.bind('resize', function(){
-        console.log($scope.toggle);
-        console.log('resize');
+        //console.log($scope.toggle);
+        //console.log('resize');
         x= w.innerWidth || e.clientWidth || g.clientWidth;
-        console.log('width', x);
+        //console.log('width', x);
         if(x>767){
             $scope.$apply(function(){
                 $scope.toggle = true;
@@ -134,31 +154,52 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
             //console.log('results', $scope.query);
         }
 
+        //IF STATEMENT CHECKS IF QUERY
         if($scope.query){
             $scope.dataService.queryItems(query).then(function(){
+                $scope.items = $scope.dataService.saleItems();
+            });
+        }else{
+            $scope.updateSaleData();
+        }
+
+    };
+
+    //SEARCH ITEMS USING SEARCH BAR
+    $scope.searchItems = function(){
+        //console.log($scope.search);
+        if($scope.search){
+            $scope.dataService.searchItems($scope.search).then(function(){
                 $scope.items = $scope.dataService.saleItems();
                 //console.log($scope.items);
             });
         }else{
             $scope.updateSaleData();
         }
-
-    };
-
-
-    //SEARCH ITEMS USING SEARCH BAR
-    $scope.searchItems = function(){
-        console.log($scope.search);
-        if($scope.search){
-            $scope.dataService.searchItems($scope.search).then(function(){
-                $scope.items = $scope.dataService.saleItems();
-                console.log($scope.items);
-            });
-        }else{
-            $scope.updateSaleData();
-        }
         $scope.search = '';
     };
+
+    //$scope.$watch('displayPage', function(){
+    //    console.log('hey the display page changed');
+    //    $scope.viewItems = $filter('limitTo')($scope.items, $scope.itemsPerPage, $scope.itemsPerPage*$scope.displayPage-1);
+    //    //$scope.$apply();
+    //});
+
+    //CHECKS SALE ITEMS
+    if($scope.dataService.saleItems() === undefined){
+        console.log('sale items undefined');
+        $scope.updateSaleData();
+    }else{
+        console.log('items defined retrieving now');
+        $scope.items = $scope.dataService.saleItems();
+    }
+
+    //CHECKS USER DATA
+    if($scope.dataService.peopleData() === undefined){
+        $scope.updateUserData();
+    }else{
+        $scope.user = $scope.dataService.peopleData();
+    }
 
 
 }]);

@@ -217,11 +217,12 @@ nav{
     text-align: center;
     padding: 25px 0;
     margin: 10px 0;
-    transition: background-color 1s, box-shadow 1s;
+    transition: box-shadow 1s;
 }
 
 .for-sale-item:hover{
-    background-color: #eeeeee;
+    /*zoom: 110%;*/
+    /*background-color: #eeeeee;*/
     -webkit-box-shadow: 0px 0 32px -10px #555555;
     -moz-box-shadow: 0px 0 32px -10px #555555;
     box-shadow: 0px 0 32px -10px #555555;
@@ -232,12 +233,12 @@ nav{
     transition: box-shadow 2s;
 }
 
-.for-sale-item:hover img{
+/*.for-sale-item:hover img{*/
 
-    -webkit-box-shadow: 0px 0 32px -10px #555555;
-    -moz-box-shadow: 0px 0 32px -10px #555555;
-    box-shadow: 0px 0 32px -10px #555555;
-}
+    /*-webkit-box-shadow: 0px 0 32px -10px #555555;*/
+    /*-moz-box-shadow: 0px 0 32px -10px #555555;*/
+    /*box-shadow: 0px 0 32px -10px #555555;*/
+/*}*/
 /*#itemGrid:after {*/
     /*content  : "";*/
     /*position : absolute;*/

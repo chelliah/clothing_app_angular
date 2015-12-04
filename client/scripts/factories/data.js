@@ -121,6 +121,7 @@ myApp.factory('DataService', ['$http', function($http){
           return getSaleItems();
         },
         saleItems: function(){
+            console.log('items in da factory', items);
             return items;
         },
         getUserItems : function(){

@@ -10,7 +10,7 @@
             <!--<label class="control-label">Search</label>-->
             <input type="search" name="search" class="form-control search-bar" ng-model="search" placeholder="Search">
             <!--<i class="glyphicon glyphicon-search form-control-feedback" ng-click="searchItems()"></i>-->
-            <button class="btn info-button search-button" ng-click="searchItems()"><span class="glyphicon glyphicon-search"></span></button>
+            <button class="btn info-button search-button" type='submit' ng-click="searchItems()"><span class="glyphicon glyphicon-search"></span></button>
         </div>
     </form>
 
@@ -20,9 +20,9 @@
             <uib-accordion-heading>
                 Gender <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
-            <div class="check-box"><input type="checkbox" value="Male" ng-model="itemFilter.gender['Male']" ng-change="logFilter()"> Male</div>
-            <div class="check-box"><input type="checkbox" value="Female" ng-model="itemFilter.gender['Female']" ng-change="logFilter()"> Female</div>
-            <div class="check-box"><input type="checkbox" value="Neither/Unisex" ng-model="itemFilter.gender['Neither/Unisex']" ng-change="logFilter()"> Neither/Unisex</div>
+            <div class="check-box"><input type="checkbox" value="Male" ng-model="itemFilter.gender['Male']" ng-click="logFilter()"> Male</div>
+            <div class="check-box"><input type="checkbox" value="Female" ng-model="itemFilter.gender['Female']" ng-click="logFilter()"> Female</div>
+            <div class="check-box"><input type="checkbox" value="Neither/Unisex" ng-model="itemFilter.gender['Neither/Unisex']" ng-click="logFilter()"> Neither/Unisex</div>
         </uib-accordion-group>
     </uib-accordion>
     <uib-accordion>
@@ -30,9 +30,9 @@
             <uib-accordion-heading>
                 Condition <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
-            <div class="check-box"><input type="checkbox" value="Like New" ng-model="itemFilter.condition['Like New']" ng-change="logFilter()"> Like New</div>
-            <div class="check-box"><input type="checkbox" value="Good" ng-model="itemFilter.condition['Good']" ng-change="logFilter()"> Good</div>
-            <div class="check-box"><input type="checkbox" value="Well Worn" ng-model="itemFilter.condition['Well Worn']" ng-change="logFilter()"> Well Worn</div>
+            <div class="check-box"><input type="checkbox" value="Like New" ng-model="itemFilter.condition['Like New']" ng-click="logFilter()"> Like New</div>
+            <div class="check-box"><input type="checkbox" value="Good" ng-model="itemFilter.condition['Good']" ng-click="logFilter()"> Good</div>
+            <div class="check-box"><input type="checkbox" value="Well Worn" ng-model="itemFilter.condition['Well Worn']" ng-click="logFilter()"> Well Worn</div>
         </uib-accordion-group>
     </uib-accordion>
     <uib-accordion>
@@ -46,7 +46,7 @@
                         {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': child.open, 'glyphicon-chevron-right': !child.open}"></i>
                     </uib-accordion-heading>
                     <div ng-repeat="field in category.list">
-                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.type[field]" ng-change="logFilter()"> {{field}} </div>
+                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.type[field]" ng-click="logFilter()"> {{field}} </div>
                     </div>
                 </uib-accordion-group>
             </uib-accordion>
@@ -63,7 +63,7 @@
                         {{category.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': child.open, 'glyphicon-chevron-right': !child.open}"></i>
                     </uib-accordion-heading>
                     <div ng-repeat="field in category.list">
-                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.size[field]" ng-change="logFilter()"> {{field}}</div>
+                        <div class="check-box"><input type="checkbox" name="{{field}}" value="{{field}}" ng-model="itemFilter.size[field]" ng-click="logFilter()"> {{field}}</div>
                     </div>
                 </uib-accordion-group>
             </uib-accordion>
@@ -78,9 +78,9 @@
         <div id="itemBtnGroup">
             <label class="lead" id="itemsPerPageLabel">Items Per Page: </label>
             <div class="btn-group" id="itemBtn">
-                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="6" ng-click="pageChanged()">6</label>
-                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="12" ng-click="pageChanged()">12</label>
-                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="24" ng-click="pageChanged()">24</label>
+                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="6" ng-click="itemDisplayChange()">6</label>
+                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="12" ng-click="itemDisplayChange()">12</label>
+                <label class="btn btn-primary num-btn" ng-model="itemsPerPage" uib-btn-radio="24" ng-click="itemDisplayChange()">24</label>
             </div>
         </div>
         <div id="sortByGroup">
@@ -95,7 +95,8 @@
     </div>
     <div class="row" id="itemGrid">
         <div class="row">
-            <div class="col-md-4 col-sm-6 for-sale-item" ng-repeat="item in items | orderBy: order | limitTo: itemsPerPage : itemsPerPage*(displayPage-1)">
+            <div class="col-md-4 col-sm-6 for-sale-item" ng-repeat="item in items | orderBy: order | limitTo:itemsPerPage:itemsPerPage*(displayPage-1) track by $index">
+
                 <img ng-src="{{item.url}}" height="150" width="auto">
                 <h3>{{item.name}}</h3>
                 <h4>{{item.price | currency:$}}</h4>
@@ -104,7 +105,7 @@
         </div>
     </div>
     <div class="row" id="pagination">
-        <uib-pagination total-items="items.length" ng-model="displayPage" items-per-page="itemsPerPage" ng-change="pageChanged()"></uib-pagination>
+        <uib-pagination total-items="items.length" ng-model="displayPage" items-per-page="itemsPerPage"></uib-pagination>
     </div>
 
 </div>
