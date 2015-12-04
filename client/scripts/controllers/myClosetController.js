@@ -8,8 +8,10 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "$window"
     $scope.dataService = DataService;
 
     $scope.updateItemData = function(){
+        console.log('updating');
         $scope.dataService.getUserItems().then(function(){
             $scope.items = $scope.dataService.userItems();
+            console.log($scope.items);
         })
     };
 
@@ -55,6 +57,7 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "$window"
         modalInstance.result.then(function(){
             console.log('closed');
             $scope.updateItemData();
+            setTimeout($scope.updateItemData(), 5000);
         })
     };
 
@@ -96,6 +99,7 @@ myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "
             $scope.item.url = data.secure_url;
             console.log('item after insertion', $scope.item);
             $http.post('/item',$scope.item).then(function(response){
+                $scope.dataService.getUserItems();
                 console.log(response, 'posted');
             });
             $scope.item = {};

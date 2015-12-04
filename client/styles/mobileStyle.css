@@ -187,7 +187,10 @@ and (min-resolution: 192dpi) {
         height: auto;
         display: block;
         overflow: auto;
+
     }
+
+
     /*PAGINATION*/
     #pagination {
         text-align: center;

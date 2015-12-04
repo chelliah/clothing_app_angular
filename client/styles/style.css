@@ -151,10 +151,6 @@ nav{
     height: 100vh;
 }
 
-.for-sale-item{
-    text-align: center;
-    padding-top:25px;
-}
 
 #sortBox{
     /*padding-bottom: 10px;*/
@@ -211,7 +207,50 @@ nav{
     margin:0;
     height: 80vh;
     overflow: scroll;
+    padding: 0 25px;
+    /*box-sizing: border-box;*/
+    /*box-shadow: 0 0 5px 10px #dddddd;*/
 }
+
+.for-sale-item{
+    border-radius: 5px;
+    text-align: center;
+    padding: 25px 0;
+    margin: 10px 0;
+    transition: background-color 1s, box-shadow 1s;
+}
+
+.for-sale-item:hover{
+    background-color: #eeeeee;
+    -webkit-box-shadow: 0px 0 32px -10px #555555;
+    -moz-box-shadow: 0px 0 32px -10px #555555;
+    box-shadow: 0px 0 32px -10px #555555;
+}
+
+.for-sale-item img {
+    border-radius: 5px;
+    transition: box-shadow 2s;
+}
+
+.for-sale-item:hover img{
+
+    -webkit-box-shadow: 0px 0 32px -10px #555555;
+    -moz-box-shadow: 0px 0 32px -10px #555555;
+    box-shadow: 0px 0 32px -10px #555555;
+}
+/*#itemGrid:after {*/
+    /*content  : "";*/
+    /*position : absolute;*/
+    /*z-index  : 1;*/
+    /*bottom   : 0;*/
+    /*left     : 0;*/
+    /*pointer-events   : none;*/
+    /*background-image : linear-gradient(to bottom,*/
+    /*rgba(255,255,255, 0),*/
+    /*rgba(255,255,255, 1) 90%);*/
+    /*width    : 100%;*/
+    /*height   : 4em;*/
+/*}*/
 
 #pagination{
     text-align: right;
@@ -239,7 +278,7 @@ nav{
     width: 90%;
     margin: 15px auto;
     /*border-bottom: 2px solid #582c2c;*/
-    background-color: rgba(160,65,82,.3);
+    /*background-color: rgba(160,65,82,.3);*/
     padding: 10px 0;
     height: 120px;
     border-radius: 5px;
@@ -272,14 +311,14 @@ nav{
 .user-item-tag{
     display: inline-block;
     position: absolute;
-    margin-top: 3%;
+    margin-top: 33px;
 }
 
 .user-item-remove{
     display: inline-block;
     position: absolute;
     margin-left: 45%;
-    margin-top: 3%;
+    margin-top: 33px;
 }
 
 

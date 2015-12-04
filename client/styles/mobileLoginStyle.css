@@ -6,6 +6,9 @@
         margin-top: 15vh;
     }
 
+    .form-group{
+        width:  80%
+    }
     .login {
         width: 80%;
     }

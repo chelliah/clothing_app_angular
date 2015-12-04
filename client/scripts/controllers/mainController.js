@@ -54,7 +54,7 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
 
     //PAGE CHANGE FUNCTION
     $scope.pageChanged = function(){
-        console.log('page changed to', $scope.currentPage);
+        console.log('page changed to', $scope.displayPage);
         //SCROLL TO TOP
         $location.hash('boxContainer');
 
