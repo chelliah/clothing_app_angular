@@ -80,8 +80,6 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
     };
 
 
-
-
     //MODAL RESIZE
     $scope.modalSize = function(){
         if(x>767){
