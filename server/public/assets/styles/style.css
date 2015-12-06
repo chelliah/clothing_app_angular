@@ -388,28 +388,9 @@ nav{
 
 
 /*VIEW ITEM MODAL STYLING*/
-/*.item-display{*/
-    /*left:0;*/
-/*}*/
-
-/*.send-email{*/
-    /*left:100%;*/
-/*}*/
-
-/*.animate{*/
-    /*-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;*/
-    /*-moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;*/
-    /*-o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;*/
-    /*transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;*/
-/*}*/
-
-/*.send-email.animate .ng-hide{*/
-    /*left:0%;*/
-/*}*/
-/*.item-display.animate .ng-hide{*/
-    /*left:-100%;*/
-/*}*/
-
+.view-item{
+    text-align: initial;
+}
 
 .view-item h1 {
     text-align: center;
@@ -430,10 +411,8 @@ nav{
     padding-top: 10px;
     width: 50%;
     margin-left: 5%;
-    padding-bottom: 10px
-}
-
-#itemInfo{
+    padding-bottom: 10px;
+    text-align: initial;
 }
 
 

@@ -1,5 +1,5 @@
  <div class="view-item">
-    <div class="item-display animate" ng-show="!showEmail">
+    <div class="item-display animate-show" ng-show="!showEmail">
         <div>
             <h1>{{item.name}}</h1>
             <img ng-src="{{item.url}}" width="auto" class="col-md-6">
@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="send-email animate" ng-show="showEmail">
+    <div class="send-email animate-show" ng-show="showEmail">
         <div>
             <h1>Send Email</h1>
             <form novalidate name='emailForm' class="form-group add-item-form">
@@ -43,7 +43,7 @@
 
             </form>
             <div class="buttons">
-                <button class ='btn info-button' type="submit" ng-click="sendEmail()">Send Email</button>
+                <button class ='btn info-button' type="submit" ng-click="sendEmail()">{{buttonText}}</button>
                 <button class="btn btn-warning" type="button" ng-click="toggleEmail()">Cancel</button>
             </div>
         </div>

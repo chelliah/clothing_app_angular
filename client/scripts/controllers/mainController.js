@@ -200,6 +200,7 @@ myApp.controller('ViewItemController', ["$scope", "$http", "$uibModalInstance", 
     $scope.showEmail = false;
 
     $scope.composeEmail = {};
+    $scope.buttonText = "Send Email";
 
 
     //FINDS USER SELLING THE ITEM
@@ -225,6 +226,7 @@ myApp.controller('ViewItemController', ["$scope", "$http", "$uibModalInstance", 
     };
 
     $scope.sendEmail = function(){
+        $scope.buttonText = "Sending..";
         $http.post('/email', $scope.composeEmail).then(function(response){
             console.log(response);
             $uibModalInstance.close('submitted');

@@ -46,7 +46,7 @@ app.use('/', index);
 
 
 // Mongo Connection //
-var mongoURI = "mongodb://localhost:27017/clothing_db_01";
+var mongoURI = "mongodb://chelliah:ramen2000@ds051970.mongolab.com:51970/fuschiadb";
 
 var mongoDB = mongoose.connect(mongoURI).connection;
 
