@@ -11,6 +11,7 @@ var user = require('./routes/user');
 var item = require('./routes/item');
 var upload = require('./routes/upload');
 var index = require('./routes/index');
+var email = require('./routes/email');
 var logout = require('./routes/logout');
 
 
@@ -39,6 +40,7 @@ app.use('/register', register);
 app.use('/upload', upload);
 app.use('/user', user);
 app.use('/item', item);
+app.use('/email', email);
 app.use('/logout', logout);
 app.use('/', index);
 

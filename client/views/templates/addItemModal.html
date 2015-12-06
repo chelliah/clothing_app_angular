@@ -7,29 +7,6 @@
             <input type="text" name="name" class="form-control" ng-model="item.name" required>
             <p ng-show="itemForm.name.$invalid && !itemForm.name.$pristine" class="help-block">Item name is required.</p>
         </div>
-
-
-        <!--<div class="form-group" ng-class="{ 'has-error' : itemForm.url.$invalid && !itemForm.url.$pristine }">-->
-            <!--<label>Item URL: </label>-->
-            <!--<input type="url" name="url" class="form-control" ng-model="item.url" required>-->
-            <!--<p ng-show="itemForm.url.$invalid && !itemForm.url.$pristine" class="help-block">Image URL is required.</p>-->
-        <!--</div>-->
-        <!--<div class="form-group" ng-class="{'has-error': itemForm.file.$pristine}">-->
-            <!--<label>Select File</label>-->
-            <!--<input name='file' type="file" ng-model="item.file" required>-->
-            <!--<p ng-show="!itemForm.file.$pristine" class="help-block">Image URL is required.</p>-->
-        <!--</div>-->
-
-        <!--<div class="form-group" ng-class="{'has-error': itemForm.file.$pristine}">-->
-            <!--<label>Select File:</label>-->
-            <!--<input type="file" ngf-select ng-model="item.file" name="file"-->
-                   <!--accept="image/*" ngf-max-size="2MB" required>-->
-            <!--<p ng-show="itemForm.file.$error.required">*required</p><br>-->
-            <!--<p ng-show="itemForm.file.$error.maxSize">File too large-->
-                <!--{{picFile.size / 1000000|number:1}}MB: max 2M</p>-->
-            <!--<img ng-show="itemForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="item.file = null" ng-show="item.file">Remove</button>-->
-        <!--</div>-->
-
         <div class="form-group add-item-field" ng-class="{'has-error': itemForm.file.$pristine}">
             <label>Select File:</label>
             <div  id="selectFile">

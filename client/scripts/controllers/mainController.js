@@ -48,17 +48,6 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
     };
 
     //PAGE CHANGE FUNCTION
-    //$scope.pageChanged = function(){
-    //
-    //    //SCROLL TO TOP
-    //    $location.hash('boxContainer');
-    //
-    //    // call $anchorScroll()
-    //    $anchorScroll();
-    //
-    //
-    //};
-
     $scope.$watch('displayPage', function(){
         console.log('page changed to', $scope.displayPage);
 
@@ -67,6 +56,8 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
 
         // call $anchorScroll()
         $anchorScroll();
+
+        $scope.$digest()
     });
 
     $scope.$watch('itemsPerPage', function(){
@@ -93,10 +84,8 @@ myApp.controller('MainController', ["$scope", "$http", "$uibModal", "$window","$
     $scope.toggle = true;
 
     w.bind('resize', function(){
-        //console.log($scope.toggle);
-        //console.log('resize');
         x= w.innerWidth || e.clientWidth || g.clientWidth;
-        //console.log('width', x);
+
         if(x>767){
             $scope.$apply(function(){
                 $scope.toggle = true;
@@ -208,23 +197,44 @@ myApp.controller('ViewItemController', ["$scope", "$http", "$uibModalInstance", 
     $scope.item = item;
     $scope.user = {};
     $scope.dataService = DataService;
+    $scope.showEmail = false;
+
+    $scope.composeEmail = {};
+
 
     //FINDS USER SELLING THE ITEM
     $scope.findUser = function(){
         return $http.get('/user/seller', {params: {id: item.user_id}}).then(function(response){
             console.log("the seller", response);
             $scope.user = response.data[0];
+            $scope.generateEmail();
+
         })
     };
 
-    $scope.ok = function () {
+    $scope.generateEmail = function(){
+        $scope.composeEmail.to = $scope.user.email;
+        $scope.composeEmail.subject = "Interest in purchasing " + item.name + " on clothing website Fuschia";
+        $scope.composeEmail.body = "Hi! I am interested in purchasing the "  + item.name + " you listed on the clothing website Fuschia";
+    };
+
+    $scope.toggleEmail = function () {
         console.log($scope.user);
-        $uibModalInstance.close('submitted');
+        $scope.showEmail = !$scope.showEmail;
+        //$uibModalInstance.close('submitted');
+    };
+
+    $scope.sendEmail = function(){
+        $http.post('/email', $scope.composeEmail).then(function(response){
+            console.log(response);
+            $uibModalInstance.close('submitted');
+        });
     };
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
+
 
     $scope.findUser();
 }]);

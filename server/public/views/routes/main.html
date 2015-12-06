@@ -70,9 +70,7 @@
         </uib-accordion-group>
     </uib-accordion>
     <!--<div id="filterButton" class="btn info-button" ng-click="logFilter()">Log Filters</div>-->
-
 </div>
-
 <div id="boxContainer" class=" col-md-9 col-sm-8 col-xs-12">
     <div class='row' id="sortBox">
         <div id="itemBtnGroup">
@@ -95,11 +93,11 @@
     </div>
     <div class="row" id="itemGrid">
         <div class="row">
-            <div class="col-md-4 col-sm-6 for-sale-item" ng-repeat="item in items | orderBy: order | limitTo: itemsPerPage: itemsPerPage*(displayPage-1) track by $index">
+            <div class="col-md-4 col-sm-6 for-sale-item" ng-repeat="item in items | orderBy: order | limitTo: itemsPerPage : itemsPerPage*(displayPage-1) track by $index">
                 <img ng-src="{{item.url}}" height="150" width="auto">
                 <h3>{{item.name}}</h3>
                 <h4>{{item.price | currency:$}}</h4>
-                <p>{{$index}}</p>
+                <!--<p>{{item._id}}</p>-->
                 <button class="btn info-button" ng-click="open(item)">Get Info</button>
             </div>
         </div>
@@ -107,5 +105,4 @@
     <div class="row" id="pagination">
         <uib-pagination total-items="items.length" ng-model="displayPage" items-per-page="itemsPerPage"></uib-pagination>
     </div>
-
 </div>

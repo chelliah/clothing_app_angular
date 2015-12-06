@@ -1,24 +1,51 @@
-<div class="view-item">
-    <div>
-        <h1>{{item.name}}</h1>
-        <img ng-src="{{item.url}}" width="auto" class="col-md-6">
-        <div id="itemInfo" class="col-md-6">
-            <h3>Seller: {{user.username}}</h3>
-            <h3>Price: {{item.price | currency:$}}</h3>
-            <p class="lead">Gender: {{item.gender}}</p>
-            <p class="lead">Size: {{item.size}}</p>
-            <p class="lead">Type: {{item.type}}</p>
-            <p class="lead">Condition: {{item.condition}}</p>
-            <p class="lead">Additional Comments:</p><p> {{item.comments}}</p>
-        </div>
+ <div class="view-item">
+    <div class="item-display animate" ng-show="!showEmail">
+        <div>
+            <h1>{{item.name}}</h1>
+            <img ng-src="{{item.url}}" width="auto" class="col-md-6">
+            <div id="itemInfo" class="col-md-6">
+                <h3>Seller: {{user.username}}</h3>
+                <h3>Price: {{item.price | currency:$}}</h3>
+                <p class="lead">Gender: {{item.gender}}</p>
+                <p class="lead">Size: {{item.size}}</p>
+                <p class="lead">Type: {{item.type}}</p>
+                <p class="lead">Condition: {{item.condition}}</p>
+                <p class="lead">Additional Comments:</p><p> {{item.comments}}</p>
+            </div>
 
-        <div class="buttons">
-            <button class ='btn btn-primary' type="submit" ng-click="ok()">
-                <a HREF="mailto:{{user.email}}?subject=Interest in purchasing {{item.name}} on clothing website
-            &body=Hi! I am interested in purchasing the {{item.name}} you listed on the clothing website Fuschia">Email Seller</a>
-            </button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            <div class="buttons">
+                <button class ='btn info-button' type="submit" ng-click="toggleEmail()">Email Seller</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
         </div>
     </div>
-</div>
+    <div class="send-email animate" ng-show="showEmail">
+        <div>
+            <h1>Send Email</h1>
+            <form novalidate name='emailForm' class="form-group add-item-form">
 
+                <div class="form-group add-item-field" ng-class="{ 'has-error' : emailForm.to.$invalid && !emailForm.to.$pristine }">
+                    <label>To: </label>
+                    <input type="text" name="to" class="form-control" ng-model="composeEmail.to" required>
+                    <p ng-show="emailForm.to.$invalid && !itemForm.to.$pristine" class="help-block">Price is required.</p>
+                </div>
+
+                <div class="form-group add-item-field" ng-class="{ 'has-error' : emailForm.subject.$invalid && !emailForm.subject.$pristine }">
+                    <label>Subject: </label>
+                    <input type="text" name="subject" class="form-control" ng-model="composeEmail.subject" required>
+                    <p ng-show="emailForm.subject.$invalid && !itemForm.subject.$pristine" class="help-block">Subject is required.</p>
+                </div>
+
+                <div class="form-group add-item-field">
+                    <label for="body">Body:</label>
+                    <textarea class="form-control" name="body" id="body" ng-model="composeEmail.body"></textarea>
+                </div>
+
+            </form>
+            <div class="buttons">
+                <button class ='btn info-button' type="submit" ng-click="sendEmail()">Send Email</button>
+                <button class="btn btn-warning" type="button" ng-click="toggleEmail()">Cancel</button>
+            </div>
+        </div>
+    </div>
+ </div>
