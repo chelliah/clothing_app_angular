@@ -81,8 +81,11 @@ myApp.controller('MyClosetController', ["$scope", "$http","$uibModal", "$window"
 myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "DataService", "Upload", function ($scope, $http, $uibModalInstance, DataService, Upload) {
 
     $scope.item = {};
+    $scope.addItemMessage = "Add Item";
 
     $scope.dataService = DataService;
+
+
 
     $scope.types = $scope.dataService.typeData();
 
@@ -94,23 +97,24 @@ myApp.controller('AddItemController', ["$scope", "$http", "$uibModalInstance", "
             url: '../upload/url',
             data: {file: $scope.file}
         }).success(function(data){
-            console.log(data, 'uploaded');
-            console.log('item before insertion', $scope.item);
+            //console.log(data, 'uploaded');
+            //console.log('item before insertion', $scope.item);
             $scope.item.url = data.secure_url;
-            console.log('item after insertion', $scope.item);
+            //console.log('item after insertion', $scope.item);
             $http.post('/item',$scope.item).then(function(response){
                 $scope.dataService.getUserItems();
                 console.log(response, 'posted');
+                $scope.item = {};
+                $uibModalInstance.close('submitted');
             });
-            $scope.item = {};
         })
     };
 
     //OK FUNCTION
     $scope.ok = function () {
         console.log($scope.item);
+        $scope.addItemMessage = "Adding...";
         $scope.upload();
-        $uibModalInstance.close('submitted');
     };
 
     $scope.cancel = function () {
