@@ -6,15 +6,11 @@ var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 var router = express.Router();
 
-//
 
-/// /var api = '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';
-//mongorestore -h ds051970.mongolab.com:51970/fuschiadb -d fuschiadb -u chelliah -p StASYNEsT:
-//db user: chelilah , password: StASYNEsT
 var options = {
     auth: {
         api_user : 'chelliah',
-        api_key : 'telecaster#90'
+        api_key : 'Rcese/oxof8'
     }
 };
 

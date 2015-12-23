@@ -17,6 +17,7 @@
     "body-parser": "^1.14.1",
     "bootstrap": "^3.3.5",
     "cloudinary": "^1.2.6",
+    "config": "^1.17.1",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "grunt": "^0.4.5",
