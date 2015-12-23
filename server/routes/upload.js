@@ -3,15 +3,16 @@ var multer = require('multer');
 var router = express.Router();
 var cloudinary = require('cloudinary');
 
+
 var uploaded = multer({
     dest: './tmp/',
     inMemory: true
 });
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME || config.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY || config.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET || config.CLOUDINARY_API_SECRET
 });
 
 //ADD NEW ITEM

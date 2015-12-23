@@ -6,11 +6,13 @@ var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 var router = express.Router();
 
+var config = require('../config.json');
+
 
 var options = {
     auth: {
-        api_user : process.env.SENGRID_API_USER,
-        api_key : process.env.SENDGRID_API_KEY
+        api_user : process.env.SENGRID_API_USER || config.SENGRID_API_USER,
+        api_key : process.env.SENDGRID_API_KEY || config.SENDGRID_API_KEY
     }
 };
 

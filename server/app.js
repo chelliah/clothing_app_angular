@@ -14,6 +14,8 @@ var index = require('./routes/index');
 var email = require('./routes/email');
 var logout = require('./routes/logout');
 
+var config = require('../config.json');
+
 
 
 // App Set //
@@ -46,7 +48,7 @@ app.use('/', index);
 
 
 // Mongo Connection //
-var mongoURI = process.env.MONGO_URI;
+var mongoURI = process.env.MONGO_URI || config.MONGO_URI;
 
 var mongoDB = mongoose.connect(mongoURI).connection;
 
@@ -63,5 +65,4 @@ mongoDB.once('open', function(){
 // Listen //
 app.listen(app.get("port"), function(){
     console.log("Listening on port: " + app.get("port"));
-    console.log(process.env.IP);
 });
