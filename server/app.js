@@ -46,7 +46,7 @@ app.use('/', index);
 
 
 // Mongo Connection //
-var mongoURI = "mongodb://chelliah:ramen2000@ds051970.mongolab.com:51970/fuschiadb";
+var mongoURI = process.env.MONGO_URI;
 
 var mongoDB = mongoose.connect(mongoURI).connection;
 
@@ -63,4 +63,5 @@ mongoDB.once('open', function(){
 // Listen //
 app.listen(app.get("port"), function(){
     console.log("Listening on port: " + app.get("port"));
+    console.log(process.env.IP);
 });
