@@ -6,7 +6,7 @@ var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 var router = express.Router();
 
-var config = require('../config.json');
+var config = require('../../config.json');
 
 
 var options = {

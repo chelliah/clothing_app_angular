@@ -4,13 +4,7 @@ var router = express.Router();
 var User = require('../models/user');
 var Item = require('../models/item');
 var Field = require('../models/field')
-var cloudinary = require('cloudinary');
 
-cloudinary.config({
-    cloud_name: 'dhro0fkhc',
-    api_key: '348353581476451',
-    api_secret: '5MCQwZGVGX_z2N5Cp74rwE_-oVI'
-});
 
 //GET FOR SALE ITEMS
 router.get('/sale', function(req,res){

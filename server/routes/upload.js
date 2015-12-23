@@ -3,6 +3,9 @@ var multer = require('multer');
 var router = express.Router();
 var cloudinary = require('cloudinary');
 
+var config = require('../../config.json');
+
+
 
 var uploaded = multer({
     dest: './tmp/',
