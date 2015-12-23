@@ -9,9 +9,9 @@ var uploaded = multer({
 });
 
 cloudinary.config({
-    cloud_name: 'dhro0fkhc',
-    api_key: '348353581476451',
-    api_secret: '5MCQwZGVGX_z2N5Cp74rwE_-oVI'
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 //ADD NEW ITEM

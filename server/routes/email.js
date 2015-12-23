@@ -9,8 +9,8 @@ var router = express.Router();
 
 var options = {
     auth: {
-        api_user : 'chelliah',
-        api_key : 'Rcese/oxof8'
+        api_user : process.env.SENGRID_API_USER,
+        api_key : process.env.SENDGRID_API_KEY
     }
 };
 
